@@ -6,6 +6,8 @@
         "adminname",
         "dbname",
         "newuser",
-        "signup"
+        "productid",
+        "signup",
+        "userid"
     ]
 }
