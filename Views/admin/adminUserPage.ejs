@@ -1,0 +1,52 @@
+
+<section class="home-section">
+  <!-- <nav>
+    <div class="sidebar-button">
+      <i class='bx bx-menu sidebarBtn'></i>
+      <span class="dashboard">Category Page</span>
+    </div>
+    <div class="search-box">
+      <input type="text" placeholder="Search...">
+      <i class='bx bx-search'></i>
+    </div> -->
+
+  </nav>
+</section>
+   
+    <div class="container mt-5">
+      <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col">SNO</th>
+            <th scope="col">ID</th>
+            <th scope="col">USERNAME</th>
+            <th scope="col">EMAIL</th>
+            <th scope="col">BLOCKED USER</th>
+            <th scope="col">UNBLOCKED USER</th>
+       
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>42328</td>
+            <td>Vishnu</td>
+            <td>vishnu@gmail.com</td>
+            <td><input class="btn-success" type="button" value="BLOCK"> </td>
+            <td><input class="btn-danger" type="button" value="UNBLOCK"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  <script>
+   let sidebar = document.querySelector(".sidebar");
+let sidebarBtn = document.querySelector(".sidebarBtn");
+sidebarBtn.onclick = function() {
+  sidebar.classList.toggle("active");
+  if(sidebar.classList.contains("active")){
+  sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
+}else
+  sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+}
+ </script>
