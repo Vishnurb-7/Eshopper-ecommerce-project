@@ -45,7 +45,7 @@ module.exports={
                         brandName:productDetails.brandName,
                         quantityName:productDetails.quantityName,
                         productDescription:productDetails.productDescription,
-                        Picture:image
+                        picture:image
                     },
                 }).then((response)=>{
                     resolve()

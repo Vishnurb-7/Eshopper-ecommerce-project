@@ -44,7 +44,7 @@ const adminAddProductPage=(req,res)=>{
         console.log(req.file)
     
         addProduct.insertProduct({
-            Picture:req.file.filename,
+            picture:req.file.filename,
             productName,
             actualPrice,
             sellingPrice,

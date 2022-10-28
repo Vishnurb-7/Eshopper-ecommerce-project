@@ -4,6 +4,7 @@ const db= require('../config/connection')
 
 module.exports={
     adminDoLogin:(adminData)=>{
+        
         return new Promise(async(resolve,reject)=>{
           let response ={}
             // console.log(adminData);

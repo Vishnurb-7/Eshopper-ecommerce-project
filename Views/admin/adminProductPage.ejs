@@ -44,7 +44,7 @@
             <td><%= product[i].productName %></td>
             <td><%= product[i].categoryName %></td>
             <td><%= product[i].sellingPrice %></td>
-            <td><img src="/images/<%=product[i].Picture %>" style="width: 4em; height: 4em;" alt=""></td>
+            <td><img src="/images/<%=product[i].picture %>" style="width: 4em; height: 4em;" alt=""></td>
             <td> <a href="/admin/adminGetOneProduct?id=<%= product[i]._id %>" class="btn btn-warning">EDIT</a></td>
             <td><a href="/admin/adminDeleteOneProduct?id=<%= product[i]._id %>" class="btn btn-danger">DELETE</a></td>
           </tr>

@@ -7,7 +7,7 @@ module.exports ={
     insertUserCredentials:(newuser)=>{
         return new Promise (async(resolve,reject)=>{
            newuser.password = await bcrypt.hash(newuser.password,10)
-           newuser.confirmPassword = await bcrypt.hash(newuser.confirmPassword,10)
+           
 
             db.get().collection(collection.USER).insertOne(newuser).then((data)=>{
                 resolve .apply(data)
