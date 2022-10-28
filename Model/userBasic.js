@@ -45,29 +45,3 @@ module.exports ={
 
 
 
-// module.exports={
-//     doLogin:(admindata)=>{
-//         return new Promise (async (resolve,reject)=>{
-           
-//             let response={}
-//             let admin =await db.get().collection('details').findOne({username:admindata.username})
-//             if(admin){
-//                 bcrypt.compare(admindata.password,admin.password).then((status=>{
-//                     if(status){
-//                         response.user=admin
-//                         response.status=true
-//                         resolve(response)
-//                     }else{
-//                         resolve({
-//                             status:false
-//                         })
-//                     }
-//                 }))
-//             }else{
-//                 resolve({
-//                     status:false
-//                 }) 
-//             }
-//         })
-//     },
-
