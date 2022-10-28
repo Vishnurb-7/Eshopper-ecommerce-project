@@ -33,44 +33,24 @@ module.exports={
             })
         })
       },
-      editProduct:(userid,productDetails)=>{
-        return new Promise (async(resolve,reject)=>{
-            console.log(productDetails)
-            productDetails.Password=await bcrypt.hash(productDetails.Password,10)
 
-            db.get().collection(collection.PRODUCT).updateOne({_id:ObjectId(userid)},{
-                $set:{
-                    
-                }
+        editProduct:(productId,productDetails,image)=>{
+            return new Promise((resolve,reject)=>{
+                db.get().collection(collection.PRODUCT).updateOne({_id:ObjectId(productId)},{
+                    $set: {
+                        productName:productDetails.productName,
+                        actualPrice:productDetails.actualPrice,
+                        sellingPrice:productDetails.sellingPrice,
+                        categoryName:productDetails.categoryName,
+                        brandName:productDetails.brandName,
+                        quantityName:productDetails.quantityName,
+                        productDescription:productDetails.productDescription,
+                        Picture:image
+                    },
+                }).then((response)=>{
+                    resolve()
+                })
             })
-        })
-      }
-
-}
-
-editUser:(userid,userDetails)=>{
-    return new Promise(async(resolve,reject)=>{
-        console.log(userDetails)
-        userDetails.Password=await bcrypt.hash(userDetails.Password,10)
-     db.get().collection('user').updateOne({_id:ObjectId(userid)},{
-        $set:{
-            Name:userDetails.Name,
-            Email:userDetails.Email,
-            Password:userDetails.Password
         }
-     }).then((response)=>{
-        resolve(response)
-     })
-    })
+
 }
-
-
-
-
-// showOneUser:(id)=>{
-//     return new Promise((resolve,reject)=>{
-//         db.get().collection('user').findOne({_id:ObjectId(id)}).then((response)=>{
-//             resolve(response)
-//         })
-//     })
-// },

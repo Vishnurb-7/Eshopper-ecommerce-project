@@ -4,6 +4,7 @@ const admin=require('../Controllers/adminLoginController')
 const addCategory=require('../Controllers/adminCategoryController')
 const addBrand=require('../Controllers/adminBrandController')
 const addProduct=require('../Controllers/adminProductController')
+const user= require('../Controllers/adminUserController')
 const { Router } = require('express')
 const multer = require('multer')
 const path =require('path')
@@ -42,7 +43,7 @@ router.get('/',admin.adminLoginPage)
 
 router.post('/adminLoginAction',admin.adminLoginAction)
 
-router.get('/adminUserPage',admin.adminUserPage)
+
 router.get('/adminHome',admin.adminHome)
 
 router.get('/adminOrderListPage',admin.adminOrderListPage)
@@ -69,7 +70,13 @@ router.get('/adminAddProduct',addProduct.adminAddProductPage)
 // router.post('/adminAddNewProduct',addProduct.addNewProduct)
 router.get("/adminDeleteOneProduct",addProduct.adminDeleteProduct)
 router.post("/adminAddNewProduct",upload.single('image'),addProduct.addNewProduct)
+router.get("/adminGetOneProduct",addProduct.updateProductDetails)
+router.post('/updateProductDetails',upload.single('image'),addProduct.updateProductionDetailsAction)
 
 
+//admin user router
+
+router.get('/adminUserPage',user.adminUserPage)
+router.get('/adminDeleteOneUser',user.deleteUser)
 
 module.exports=router
