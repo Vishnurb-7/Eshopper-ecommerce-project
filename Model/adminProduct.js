@@ -48,7 +48,7 @@ module.exports={
                         picture:image
                     },
                 }).then((response)=>{
-                    resolve()
+                    resolve(response)
                 })
             })
         }

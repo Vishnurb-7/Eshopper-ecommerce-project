@@ -6,8 +6,9 @@ router.get("/",userBasic.showLandingPage)
 router.get('/showLoginAction',userBasic.showLoginPage)
 router.get('/showSignUpAction',userBasic.showSignUpPage)
 router.get('/userSignOutAction',userBasic.showLandingPage)
-router.post('/signupAction',userBasic.showLandingPageAfterSignup)
+router.post('/signupAction',userBasic.userSignupAction)
 router.post('/userNewLoginAction',userBasic.userLoginAction)
+router.post("/otpVerification",userBasic.verifyOtp)
 
 
 

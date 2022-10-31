@@ -4,23 +4,23 @@
   <form action="/signupAction" method="post" onsubmit="return validation()">
     <label>First Name</label>
     <input type="text" name="firstName" id="Fname" placeholder="" />
-    <span id="userFnameError"></span>
+    <span id="userFnameError" class="text-danger fw-normal"></span>
 
     <label>Last Name</label>
     <input type="text" name="lastName" id="Lname" placeholder="" />
-    <span id="userLnameError"></span>
+    <span id="userLnameError" class="text-danger fw-normal"></span>
 
     <label>Email</label>
     <input type="email" name="email" id="email" placeholder="" />
-    <span id="emailError"></span>
+    <span id="emailError" class="text-danger fw-normal"></span>
 
     <label>Password</label>
     <input type="password" name="password" id="pass" placeholder="" />
-    <span id="userPasswordError"></span>
+    <span id="userPasswordError" class="text-danger fw-normal"></span>
 
     <label>Confirm Password</label>
     <input type="password" id="cpass" placeholder="" />
-    <span id="userCpasswordError"></span>
+    <span id="userCpasswordError" class="text-danger fw-normal"></span>
 
     <input type="submit" value="Submit" />
   </form>
@@ -37,71 +37,6 @@
 
 
 <script>
-  function validation(){
-    let flag = 0;
-    let firstName = document.getElementById('Fname').value.trim()
-    let lastName = document.getElementById('Lname').value.trim()
-    let Email = document.getElementById('email').value.trim()
-    let password = document.getElementById("pass").value.trim()
-    let confirmPassword = document.getElementById('cpass').value.trim()
-
-    if (firstName =='') {
-      document.getElementById('userFnameError').innerHTML = ('firstname required')
-      flag = 1
-    } else if (firstName.length < 3) {
-      document.getElementById("userFnameError").innerHTML = ("atleast 3 character")
-      flag = 1
-    } else {
-      document.getElementById('userFnameError').innerHTML = ''
-    }
-
-    if (lastName =='') {
-      document.getElementById('userLnameError').innerHTML = ('lastName required')
-      flag = 1
-    } else if (lastName.length < 2) {
-      document.getElementById("userLnameError").innerHTML = ("atleast 2 character")
-      flag = 1
-    } else {
-      document.getElementById('userLnameError').innerHTML = ''
-    }
-
-    if (Email == '') {
-      document.getElementById("emailError").innerHTML = ('email required')
-      flag = 1
-    } else {
-      document.getElementById('emailError').innerHTML = ''
-    }
-
-    if (password == '') {
-      document.getElementById('userPasswordError').innerHTML = ('password required')
-      flag = 1
-    } else if (password.length<3) {
-      document.getElementById("userPasswordError").innerHTML = ("atleast 3 character")
-      flag = 1
-    } else {
-      document.getElementById('userPasswordError').innerHTML = ''
-    }
-
-    if (confirmPassword !=password) {
-      document.getElementById('userCpasswordError').innerHTML = ('incorrect password ')
-      flag = 1
-    }else if(confirmPassword==''){
-      document.getElementById('userCpasswordError').innerHTML = (' password  required')
-      flag = 1
-    }
-
-     else if (confirmPassword.length < 3) {
-      document.getElementById("userCpasswordError").innerHTML = ("atleast 3 character")
-      flag = 1
-    } else {
-      document.getElementById('userCpasswordError').innerHTML = ''
-    }
-
-    if (flag == 1) {
-      return false
-    }
-
-
-  }
+  
 
 </script>

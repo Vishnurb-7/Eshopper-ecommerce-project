@@ -79,6 +79,7 @@ const adminAddProductPage=(req,res)=>{
     }
    
   }
+  
 
 const adminDeleteProduct=(req,res)=>{
     if(req.session.admin){

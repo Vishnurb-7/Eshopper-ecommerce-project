@@ -3,11 +3,11 @@
     <h1>Login</h1>
     <form action="/userNewLoginAction" method="post" onsubmit="return adminLoginValidation()">
       <label>User Email</label>
-      <span id="userNameError"></span>
+      <span id="userNameError" class="text-danger fw-normal"></span>
       <input type="email"  id="name" name="userEmail"  />
       <label>Password</label>
-      <span id="passwordError"></span>
-      <input type="password" id="pass" name="password"  />
+     <input type="password" id="pass" name="password"  />
+      <span id="passwordError" class="text-danger fw-normal"></span>
       <br><br>
       <input type="submit"  value="Login">
      
@@ -15,33 +15,7 @@
 
 
   <script>
-    function adminLoginValidation(){
-        let flag =0
-        let adminName = document.getElementById('name').value.trim()
-        let password = document.getElementById('pass').value.trim()
+   
+  </script> 
 
-        if(adminName===''){
-            document.getElementById('userNameError').innerHTML=('Name required')
-            flag=1
-
-        }else {
-            document.getElementById('userNameError').innerHTML=''
-
-        }
-
-        if(password==''){
-            document.getElementById('passwordError').innerHTML='Password Required'
-            flag=1
-        }else{
-            document.getElementById('passwordError').innerHTML=''
-
-        }
-
-        if(flag==1){
-            return false
-        }
-
-    }
-  </script>
-
-  
+   
