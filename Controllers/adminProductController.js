@@ -40,6 +40,9 @@ const adminAddProductPage=(req,res)=>{
             brandName,
             quantityName,
             productDescription,
+            addToTrendingProduct,
+            addToNewlyArrivedProduct
+
         }=req.body
         console.log(req.file)
     
@@ -51,7 +54,10 @@ const adminAddProductPage=(req,res)=>{
             categoryName,
             brandName,
             quantityName,
-            productDescription
+            productDescription,
+            addToTrendingProduct,
+            addToNewlyArrivedProduct
+
             
         }).then((response)=>{
             res.redirect('/admin/adminProductPage')

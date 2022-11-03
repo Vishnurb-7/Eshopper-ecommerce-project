@@ -1,6 +1,8 @@
 const { response } = require('express')
 const userDetails= require('../Model/userBasic')
 const nodemailer =require('nodemailer')
+const userProductDisplay=require('../Model/userProductDisplayModel')
+const categoryDisplay=require('../Model/adminCategory')
 
 
 
@@ -16,7 +18,12 @@ let mailTransporter = nodemailer.createTransport({
 const OTP = `${Math.floor(1000+ Math.random() * 9000 )}`;
 
 const showLandingPage =(req,res)=>{
-    res.render("user/index",{admin:false,user:true})
+    userProductDisplay.displayProduct().then((productDetails)=>{
+    categoryDisplay.showCategory().then((category)=>{
+        res.render("user/index",{admin:false,user:true,productDetails,category})
+    })
+    })
+   
 }
 
 const showLoginPage =(req,res)=>{
