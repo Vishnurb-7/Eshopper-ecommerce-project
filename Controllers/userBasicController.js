@@ -3,6 +3,8 @@ const userDetails= require('../Model/userBasic')
 const nodemailer =require('nodemailer')
 const userProductDisplay=require('../Model/userProductDisplayModel')
 const categoryDisplay=require('../Model/adminCategory')
+const banner =require('../Model/bannerModel')
+
 
 
 
@@ -18,9 +20,13 @@ let mailTransporter = nodemailer.createTransport({
 const OTP = `${Math.floor(1000+ Math.random() * 9000 )}`;
 
 const showLandingPage =(req,res)=>{
+    
     userProductDisplay.displayProduct().then((productDetails)=>{
     categoryDisplay.showCategory().then((category)=>{
-        res.render("user/index",{admin:false,user:true,productDetails,category})
+        banner.showBanner().then((banner)=>{
+            res.render("user/index",{admin:false,user:true,productDetails,category,banner})
+        })
+        
     })
     })
    
@@ -55,7 +61,7 @@ const userSignupAction=(req,res)=>{
 
     userDetails.insertUserCredentials(verified,firstName,lastName,email,password).then((response)=>{
 
-        userID=response.insertedID
+        userID=response.insertedId
      
         res.render("user/useOtpVerificationPage",{admin:false,user:false})
     })
@@ -65,7 +71,17 @@ const userLoginAction =(req,res)=>{
     userDetails.doLogin(req.body).then((response)=>{
         if(response.status)
         {
-            res.render("user/indexLanding",{admin:false,user:true})
+            userProductDisplay.displayProduct().then((productDetails)=>{
+                categoryDisplay.showCategory().then((category)=>{
+                    banner.showBanner().then((banner)=>{
+                        res.render("user/indexLanding",{admin:false,user:true,productDetails,category,banner})
+                    })
+                    console.log('hh',category)
+
+                    
+                })
+            })
+           
         }else{
             res.render('user/userLoginPage',{admin:false,user:false})
         }
@@ -73,13 +89,23 @@ const userLoginAction =(req,res)=>{
 }
 
 const verifyOtp=(req,res)=>{
+    console.log("hh",userID)
     if(OTP==req.body.otp){
     userDetails.userVerified(userID).then((response)=>{
-        res.render('user/indexLanding',{admin:false,user:true})
+        userProductDisplay.displayProduct().then((productDetails)=>{
+        categoryDisplay.showCategory().then((category)=>{
+            banner.showBanner().then((banner)=>{
+                res.render('user/indexLanding',{admin:false,user:true,productDetails,category,banner})
+            })
+           
+        })
+        })
+       
     })
        
     }else
     {
+        
         console.log("otp verification false")
     }
 }

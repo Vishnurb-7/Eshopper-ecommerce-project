@@ -1,5 +1,5 @@
 body {
-    background-color: #344a72;
+    background-color: #2856ac;
     font-family: "Roboto", sans-serif;
   }
   
@@ -43,7 +43,7 @@ body {
     width: 100%;
     padding: 7px;
     border: none;
-    border: 1px solid gray;
+    border: 1px solid rgb(161, 128, 128);
     border-radius: 6px;
     outline: none;
   }

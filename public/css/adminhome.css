@@ -10,7 +10,7 @@
   position: fixed;
   height: 100%;
   width: 240px;
-  background: #6e508e;
+  background: #7e3dc2;
   transition: all 0.5s ease;
 }
 .sidebar.active{
@@ -50,10 +50,10 @@
   transition: all 0.4s ease;
 }
 .sidebar .nav-links li a.active{
-  background: #081D45;
+  background: #cd078e;
 }
 .sidebar .nav-links li a:hover{
-  background: #081D45;
+  background: #c618d3;
 }
 .sidebar .nav-links li i{
   min-width: 60px;
@@ -79,6 +79,7 @@
   width: calc(100% - 240px);
   left: 240px;
   transition: all 0.5s ease;
+  padding-bottom: 60px;
 }
 .sidebar.active ~ .home-section{
   width: calc(100% - 60px);

@@ -3,5 +3,6 @@ module.exports={
     ADD_CATEGORY:'add_category',
     BRAND:'brand',
     PRODUCT:'product',
-    USER: 'user'
+    USER: 'user',
+    BANNER:'banner'
 }

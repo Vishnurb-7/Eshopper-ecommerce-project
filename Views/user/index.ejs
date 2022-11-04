@@ -39,8 +39,8 @@
 
     <!-- Topbar End -->
 
-
-    <!-- ----------------------------- Navbar Start ------------------------------ -->
+<!-- 
+     Navbar Start  -->
 
     <div class="container-fluid mb-5">
         <div class="row border-top px-xl-5">
@@ -61,20 +61,20 @@
                         </div> -->
 
 
-                        <!----------------------- CATEGORY DISPLAY ------------------------------>
+                        <!-- CATEGORY DISPLAY  -->
                         <% for(var i=0;i<category.length;i++) { %>
                         <a href="" class="nav-item nav-link"><%= category[i].newCategory %></a>
                         <% } %>
                     </div>
                 </nav>
             </div>
-
-            <!------------------------------- MINI NAVBAR START -------------------------------->
+<!-- 
+            MINI NAVBAR START  -->
 
             <div class="col-lg-9">
                 <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
                     <a href="" class="text-decoration-none d-block d-lg-none">
-                        <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">E</span>FIT</h1>
+                        <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">E</span>SHOPPER</h1>
                     </a>
                     <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                         <span class="navbar-toggler-icon"></span>
@@ -100,46 +100,34 @@
                     </div>
                 </nav>
 
-                <!------------------------------- MINI NAVBAR END ------------------------>
-                
-
-                <!--------------------------------- CAROUSEL START ----------------------->
-
-                <div id="header-carousel" class="carousel slide" data-ride="carousel">
+                <!-- MINI NAVBAR END 
+                 -->
+<!-- 
+                CAROUSEL START  -->
+              
+                  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
-                        <div class="carousel-item active" style="height: 410px;">
-                            <img class="img-fluid" src="img/carousel-1.jpg" alt="Image">
-                            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                                <div class="p-3" style="max-width: 700px;">
-                                    <h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First Order</h4>
-                                    <h3 class="display-4 text-white font-weight-semi-bold mb-4">Fashionable Dress</h3>
-                                    <a href="" class="btn btn-light py-2 px-3">Shop Now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item" style="height: 410px;">
-                            <img class="img-fluid" src="img/carousel-2.jpg" alt="Image">
-                            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                                <div class="p-3" style="max-width: 700px;">
-                                    <h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First Order</h4>
-                                    <h3 class="display-4 text-white font-weight-semi-bold mb-4">Reasonable Price</h3>
-                                    <a href="" class="btn btn-light py-2 px-3">Shop Now</a>
-                                </div>
-                            </div>
-                        </div>
+                        <% for(var i=0;i<banner.length;i++) { %>
+                      <div class="carousel-item active" style="height: 410px;">
+                        <img src="/images/<%=banner[i].picture %>"   class="d-block w-100" alt="...">
+                   
                     </div>
-                    <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
-                        <div class="btn btn-dark" style="width: 45px; height: 45px;">
-                            <span class="carousel-control-prev-icon mb-n2"></span>
-                        </div>
-                    </a>
-                    <a class="carousel-control-next" href="#header-carousel" data-slide="next">
-                        <div class="btn btn-dark" style="width: 45px; height: 45px;">
-                            <span class="carousel-control-next-icon mb-n2"></span>
-                        </div>
-                    </a>
-                </div>
-                <!---------------------------------- CAROUSEL END ----------------------------------->
+                    <% } %>
+                    </div>
+                   
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>
+
+
+<!-- 
+                 CAROUSEL END  -->
             </div>
         </div>
     </div>
@@ -178,7 +166,7 @@
     <!-- Featured End -->
 
 
-    <!---------------------------------- CATEGORIES START --------------------------------->
+    <!-- CATEGORIES START  -->
 
     <div class="container-fluid pt-5">
         <div class="row px-xl-5 pb-3">
@@ -206,10 +194,10 @@
     </div>
 
 
-    <!------------------------------ CATEGORIES END -------------------------------------->
+    <!-- CATEGORIES END  -->
 
-
-    <!--------------------------------- OFFER STARTS  ----------------------------------->
+<!-- 
+    OFFER STARTS   -->
 
     <div class="container-fluid offer pt-5">
         <div class="row px-xl-5">
@@ -235,10 +223,10 @@
             </div>
         </div>
     </div>
-    <!------------------------------------------- OFFER ENDS---------------------------------------->
+    <!-- OFFER ENDS -->
 
-
-    <!----------------------------------- TRENDING PRODUCTS START -------------------------------->
+<!-- 
+     TRENDING PRODUCTS START  -->
     <div class="container-fluid pt-5">
         <div class="text-center mb-4">
             <h2 class="section-title px-5"><span class="px-2">Trending Products</span></h2>
@@ -272,10 +260,9 @@
 
             <!----------------------------------------------------------------->
             
-    <!------------------------------------- TRENDING PRODUCTS END -------------------------------->
+    <!-- TRENDING PRODUCTS END  -->
 
-
-    <!----------------------------------- SUBSCRIPTION STARTS --------------------------------->
+     <!-- SUBSCRIPTION STARTS  -->
 
     <div class="container-fluid bg-secondary my-5">
         <div class="row justify-content-md-center py-5 px-xl-5">
@@ -295,10 +282,10 @@
             </div>
         </div>
     </div>
-    <!-------------------------------------- SUBSCRIPTION ENDS ------------------------------>
+   <!-- SUBSCRIPTION ENDS  -->
 
 
-    <!---------------------------------------- LATEST ARRIVALS ------------------------------>
+  <!-- LATEST ARRIVALS  -->
 
     <div class="container-fluid pt-5">
         <div class="text-center mb-4">
@@ -320,7 +307,7 @@
                         </div>
                     </div>
                     <div class="card-footer d-flex justify-content-between bg-light border">
-                        <a href="viewProductDetailsPage" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                        <a href="viewProductDetailsPage?id=<%= productDetails[i]._id %>" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
                         <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
                     </div>
                 </div>
@@ -334,7 +321,7 @@
             </div>
         </div>
     </div>
-    <!------------------------------------- LATEST ARRIVALS END --------------------------->
+  <!-- LATEST ARRIVALS END  -->
 
 
     <!-- Vendor Start -->

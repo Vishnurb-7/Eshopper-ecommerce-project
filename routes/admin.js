@@ -5,10 +5,12 @@ const addCategory=require('../Controllers/adminCategoryController')
 const addBrand=require('../Controllers/adminBrandController')
 const addProduct=require('../Controllers/adminProductController')
 const user= require('../Controllers/adminUserController')
+const banner =require('../Controllers/adminBannerController')
 const { Router } = require('express')
 const multer = require('multer')
 const path =require('path')
 
+//muter
 
 const storage = multer.diskStorage({
     destination: './public/images',
@@ -78,5 +80,12 @@ router.post('/updateProductDetails',upload.single('image'),addProduct.updateProd
 
 router.get('/adminUserPage',user.adminUserPage)
 router.get('/adminDeleteOneUser',user.deleteUser)
+
+
+//admin banner router
+
+router.get("/adminBannerPage",banner.adminBannerPage)
+router.post('/addNewBanner',upload.single('image'),banner.addNewBanner)
+router.delete("/deleteBanner",banner.deleteBanner)
 
 module.exports=router

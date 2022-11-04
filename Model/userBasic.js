@@ -54,14 +54,15 @@ module.exports = {
       db.get()
         .collection(collection.USER)
         .updateOne(
-          { _Id: userID },
+          { _id: userID },
           {
             $set: {
               verified: 1,
             },
           }
         )
-        .then((response) => [resolve(response)]);
+        .then((response) =>{resolve(response)
+        });
     });
   },
 };
