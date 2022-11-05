@@ -4,17 +4,14 @@ const Banner =require('../Model/bannerModel')
 
 
 const adminBannerPage=(req,res)=>{
-    if(req.session.admin){
+  
         Banner.showBanner().then((banner)=>{
             res.render('admin/adminBannerPage',{admin:true,title:'BANNER CONTROL PAGE',banner})
         })
-    }else{
-        res.render('admin/adminLogin',{admin:false,user:false})
     }
-}
 
 const addNewBanner=(req,res)=>{
-    if(req.session.admin){
+    
         const {
             newBanner
 
@@ -25,11 +22,8 @@ const addNewBanner=(req,res)=>{
         }).then((response)=>{
             res.redirect('/admin/adminBannerPage')
         })
-    }else{
-        res.render('admin/adminLogin',{admin:false,user:false})
     }
-}
-
+    
 const deleteBanner=(req,res)=>{
     let id = req.body.bannerId
     console.log("hhh",id)

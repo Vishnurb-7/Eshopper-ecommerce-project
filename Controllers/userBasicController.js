@@ -20,11 +20,12 @@ let mailTransporter = nodemailer.createTransport({
 const OTP = `${Math.floor(1000+ Math.random() * 9000 )}`;
 
 const showLandingPage =(req,res)=>{
+    let userData =req.session.user;
     
     userProductDisplay.displayProduct().then((productDetails)=>{
     categoryDisplay.showCategory().then((category)=>{
         banner.showBanner().then((banner)=>{
-            res.render("user/index",{admin:false,user:true,productDetails,category,banner})
+            res.render("user/index",{admin:false,user:true,productDetails,category,banner,userData})
         })
         
     })
@@ -33,6 +34,7 @@ const showLandingPage =(req,res)=>{
 }
 
 const showLoginPage =(req,res)=>{
+    
     res.render('user/userLoginPage',{admin:false,user:false})
 }
 
@@ -68,13 +70,14 @@ const userSignupAction=(req,res)=>{
 
 }
 const userLoginAction =(req,res)=>{
+    let userData=req.session.user;
     userDetails.doLogin(req.body).then((response)=>{
         if(response.status)
         {
             userProductDisplay.displayProduct().then((productDetails)=>{
                 categoryDisplay.showCategory().then((category)=>{
                     banner.showBanner().then((banner)=>{
-                        res.render("user/indexLanding",{admin:false,user:true,productDetails,category,banner})
+                        res.redirect("/")
                     })
                     console.log('hh',category)
 

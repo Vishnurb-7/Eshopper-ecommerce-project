@@ -3,13 +3,9 @@ const adminLogin=require('../Model/admin_helper')
 
 
 const adminLoginPage=(req,res)=>{
-    if(req.session.admin){
+  
         res.render('admin/adminHome',{admin:true,title:'ADMIN HOME PAGE'})
-    }else{
-        res.render('admin/adminLogin',{admin:false,user:false})
     }
-    
-}
 
 
 const adminLoginAction=(req,res)=>{
@@ -27,15 +23,10 @@ const adminLoginAction=(req,res)=>{
 }
 
 const adminHome=(req,res)=>{
-    if(req.session.admin){
+  
         res.render('admin/adminHome',{admin:true,title:'ADMIN HOME PAGE'})
     }
-    else{
-        res.render('admin/adminLogin',{admin:false,user:false}) 
-    }
-   
-}
-
+    
 const adminOrderListPage=(req,res)=>{
     res.render('admin/adminOrderList',{admin:true,title:'ORDER LIST PAGE'})
 }

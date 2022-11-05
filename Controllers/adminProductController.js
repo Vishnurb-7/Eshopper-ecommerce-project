@@ -6,32 +6,23 @@ const Brand =require('../Model/adminBrand')
 
 
 const adminProductPage=(req,res)=>{
-    if(req.session.admin){
+    
         addProduct.showProduct().then((product)=>{
             res.render('admin/adminProductPage',{admin:true,title:'PRODUCT CONTROL PAGE',product})
         })
-    }else{
-        res.render('admin/adminLogin',{admin:false,user:false})
     }
-  
-    
-}
 
 const adminAddProductPage=(req,res)=>{ 
-    if(req.session.admin){
+   
         category.showCategory().then((categoryDetails)=>{
             Brand.showBrand().then((brandDetails)=>{
                 res.render('admin/adminAddProductPage',{admin:true,title:'ADD PRODUCT PAGE',categoryDetails,brandDetails})
             })
             })
-    }else{
-        res.render('admin/adminLogin',{admin:false,user:false})
     }
-    
-}
 
   const addNewProduct=(req,res)=>{
-    if(req.session.admin){
+   
         const {
             productName,
             actualPrice,
@@ -62,14 +53,10 @@ const adminAddProductPage=(req,res)=>{
         }).then((response)=>{
             res.redirect('/admin/adminProductPage')
         })
-    }else{
-        res.render('admin/adminLogin',{admin:false,user:false})
     }
-    
-  }
 
   const updateProductionDetailsAction =(req,res)=>{
-    if(req.session.admin){
+    
         let id  =req.body.id;
         let newProductData =req.body;
         let newImageId =req.file.filename;
@@ -80,26 +67,19 @@ const adminAddProductPage=(req,res)=>{
         
             })
         })
-    }else{
-        res.render('admin/adminLogin',{admin:false,user:false})
     }
-   
-  }
   
 
 const adminDeleteProduct=(req,res)=>{
-    if(req.session.admin){
+    
         let productId = req.query.id
         addProduct.deleteProduct(productId).then((response)=>{
             res.redirect('/admin/adminProductPage')
         })
-    }else{
-        res.render('admin/adminLogin',{admin:false,user:false})
     }
-   
-}
+
 const updateProductDetails =async(req,res)=>{
-    if(req.session.admin){
+   
         let productid =req.query.id
     let product = await addProduct.showOneProduct(productid)
 
@@ -109,12 +89,7 @@ const updateProductDetails =async(req,res)=>{
         res.render("admin/adminEditProduct",{admin:true,user:false,title:"EDIT PRODUCT PAGE",categoryDetails,brandDetails,product})
     })
     })
-    }else{
-        res.render('admin/adminLogin',{admin:false,user:false})
     }
-    
-}
-
 
 
 module.exports={
