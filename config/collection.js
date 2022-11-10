@@ -4,5 +4,7 @@ module.exports={
     BRAND:'brand',
     PRODUCT:'product',
     USER: 'user',
-    BANNER:'banner'
+    BANNER:'banner',
+    CART:'cart',
+    WISHLIST:'wishlist'
 }

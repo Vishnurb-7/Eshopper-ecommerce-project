@@ -26,7 +26,7 @@ const addNewBanner=(req,res)=>{
     
 const deleteBanner=(req,res)=>{
     let id = req.body.bannerId
-    console.log("hhh",id)
+    // console.log("hhh",id)
 
     Banner.deleteBanner(id).then((response)=>{
         res.json(response)

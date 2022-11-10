@@ -9,7 +9,7 @@ const adminLoginPage=(req,res)=>{
 
 
 const adminLoginAction=(req,res)=>{
-    console.log(req.body)
+    // console.log(req.body)
     adminLogin.adminDoLogin(req.body).then((response)=>{
         if(response.status)
 

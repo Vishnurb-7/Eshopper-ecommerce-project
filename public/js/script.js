@@ -1,44 +1,46 @@
+//add to cart
 
- //userLoginPage validation
+function addToCart(proId){
 
-   
+  $.ajax({
+      url:'/add-to-cart/'+proId,
+      method:'post',
+      data:{productId:proId},
+      success:(response)=>{
 
+        if(response.status)
+        {
+          let count = $('#cart-count').html()
+          count = parseInt(count)+1
+          $('#cart-count').html(count)
 
+        }
+          alert('product added to cart')
+      }
+  })
+}
 
-    //userREgisterValidation
+//add to wishlist
 
-    
+function addToWishList(proId)
+{
 
-
-      //adminLoginValidation
-
-
-    //    function adminLoginValidation(){
-    //     let flag =0
-    //     let adminName = document.getElementById('name').value.trim()
-    //     let password = document.getElementById('pass').value.trim()
-
-    //     if(adminName===''){
-    //         document.getElementById('userNameError').innerHTML=('Name required')
-    //         flag=1
-
-    //     }else {
-    //         document.getElementById('userNameError').innerHTML=''
-
-    //     }
-
-    //     if(password==''){
-    //         document.getElementById('passwordError').innerHTML='Password Required'
-    //         flag=1
-    //     }else{
-    //         document.getElementById('passwordError').innerHTML=''
-
-    //     }
-
-    //     if(flag==1){
-    //         return false
-    //     }
-
-    // }
-
-  
+  $.ajax({
+    url:'/addToWishList',
+    method:'post',
+    data:{productId:proId},
+    success:(response)=>{
+      if(response.status){
+        let count = $('#wish-list-count').html()
+        count=parseInt(count)+1
+        $('wish-list-count').html(count)
+        alert('product added to wishlist')
+      }
+      else
+      {
+        alert(response)
+      }
+      
+    }
+  })
+}

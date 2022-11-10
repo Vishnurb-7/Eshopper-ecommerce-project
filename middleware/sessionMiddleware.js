@@ -1,10 +1,11 @@
 
 
 const userSessionChecker=(req,res,next)=>{
-    if (req.session.user){
+    
+    if (req.session.loggedIn){
         next()
     }else{
-
+        res.render("user/userLoginPage",{admin:false,user:false})
     }
 }
 

@@ -39,8 +39,8 @@ module.exports={
                 db.get().collection(collection.PRODUCT).updateOne({_id:ObjectId(productId)},{
                     $set: {
                         productName:productDetails.productName,
-                        actualPrice:productDetails.actualPrice,
-                        sellingPrice:productDetails.sellingPrice,
+                        actualPrice:parseInt(productDetails.actualPrice),
+                        sellingPrice:parseInt(productDetails.sellingPrice),
                         categoryName:productDetails.categoryName,
                         brandName:productDetails.brandName,
                         quantityName:productDetails.quantityName,

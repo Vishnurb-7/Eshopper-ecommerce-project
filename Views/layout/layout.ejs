@@ -37,9 +37,9 @@
 
   </head>
   <body>
-    <% if(admin) {%>
+    <% if (admin) { %>
       <%- include('../partials/adminHead.ejs') %>
-      <%} else if(user) {%>
+      <%} else if(user) { %>
         <%- include('../partials/userHead.ejs') %>
       <% } %>
     <%- body %>

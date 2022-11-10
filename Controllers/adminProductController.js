@@ -1,4 +1,5 @@
 const {response}= require('express')
+
 const addProduct=require('../Model/adminProduct')
 const category= require('../Model/adminCategory')
 const Brand =require('../Model/adminBrand')
@@ -89,6 +90,25 @@ const updateProductDetails =async(req,res)=>{
         res.render("admin/adminEditProduct",{admin:true,user:false,title:"EDIT PRODUCT PAGE",categoryDetails,brandDetails,product})
     })
     })
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     }
 
 

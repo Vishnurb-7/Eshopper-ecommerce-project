@@ -30,6 +30,7 @@ module.exports = {
           bcrypt.compare(userData.password, user.password).then((status) => {
             if (status) {
               response.status = true;
+              response.user=user
               resolve(response);
             } else {
               resolve({
@@ -51,7 +52,8 @@ module.exports = {
   },
   userVerified: (userID) => {
     return new Promise(async (resolve, reject) => {
-      db.get()
+      let user=await db.get().collection(collection.USER).findOne({_id:userID})
+      await db.get()
         .collection(collection.USER)
         .updateOne(
           { _id: userID },
@@ -61,7 +63,9 @@ module.exports = {
             },
           }
         )
-        .then((response) =>{resolve(response)
+        .then((response) =>{
+          response.user=user
+          resolve(response)
         });
     });
   },
