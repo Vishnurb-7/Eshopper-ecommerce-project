@@ -5,6 +5,7 @@ const userProductDetails=require('../Controllers/userProductDisplay')
 const sessionChecker=require('../middleware/sessionMiddleware')
 const userCart=require('../Controllers/userCartController')
 const wishList=require('../Controllers/userWishListController')
+const proceedToCheckOut=require('../Controllers/userCheckOutController')
 
 
 //user router
@@ -28,15 +29,18 @@ router.get('/viewProductDetailsPage',sessionChecker.userSessionChecker,userProdu
 router.get('/userCart',sessionChecker.userSessionChecker,userCart.userCartPage)
 
 router.post('/add-to-cart/:id',sessionChecker.userSessionChecker,userCart.addToCart)
-router.post('changeProductQuantity',userCart.cartChangeProductQuantity)
-router.delete('/removeCartProduct',userCart.removeCartOneProduct)
+router.post('/changeProductQuantity',sessionChecker.userSessionChecker,userCart.cartChangeProductQuantity)
+router.delete('/removeCartProduct',sessionChecker.userSessionChecker,userCart.removeCartOneProduct)
 
 
 
 //user wishlist
-router.get("/showWishListPage",wishList.userWishListPage)
-router.post('/addToWishList',wishList.addToWishList)
-router.delete('/removeWishListProduct',wishList.removeWishListProduct)
+router.get("/showWishListPage",sessionChecker.userSessionChecker,wishList.userWishListPage)
+router.post('/addToWishList',sessionChecker.userSessionChecker,wishList.addToWishList)
+router.delete('/removeWishListProduct',sessionChecker.userSessionChecker,wishList.removeWishListProduct)
+
+
+router.get('/proceedToCheckOut',sessionChecker.userSessionChecker,proceedToCheckOut.showCheckOutPage)
 
 
 module.exports=router

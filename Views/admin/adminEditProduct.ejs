@@ -16,10 +16,8 @@
 <section >
     <div class="container">
         <div class="row pb-5">
-            <form action="/admin/updateProductDetails" method="post" enctype="multipart/form-data">
-                <div>
-                    <input type="text" name="id" id="id" value="<%= product._id%>" style="display:none">
-                </div>
+            <form action="/admin/editData/<%= product._id %>?_method=PUT" method="post" enctype="multipart/form-data">
+                
                 <div class="d-flex pe-3">
                     <div class="input-group mb-3 pe-3 w-50">
                         <span class="input-group-text" id="inputGroup-sizing-default">Product Name</span>

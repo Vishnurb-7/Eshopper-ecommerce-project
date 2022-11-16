@@ -9,11 +9,12 @@ module.exports={
             item:ObjectID(proId),
             quantity:1
         }
-        console.log(proId,"dkjdfjdfj");
+        // console.log(proId,"dkjdfjdfj");
         return new Promise(async(resolve,reject)=>{
-            let userCart = await db.get().collection(collection.WISHLIST).findOne({user:ObjectID(userId)})
-            if(userCart){
-                let proExist = userCart.products.findIndex(product => product.item == proId)
+            let userWishlist = await db.get().collection(collection.WISHLIST).findOne({user:ObjectID(userId)})
+      
+            if(userWishlist){
+                let proExist = userWishlist.products.findIndex(product => product.item == proId)
                 if(proExist!=-1){
                     db.get().collection(collection.WISHLIST).updateOne({user:ObjectID(userId),'products.item':ObjectID(proId)},
                     {
@@ -33,7 +34,7 @@ module.exports={
             }else{
                 let cartObj={
                     user:ObjectID(userId),
-                    products:[proId]
+                    products:[proObj]
                 }
                 db.get().collection(collection.WISHLIST).insertOne(cartObj).then((response)=>{
                     resolve()
@@ -46,7 +47,7 @@ module.exports={
             
             let wishListItems= await db.get().collection(collection.WISHLIST).aggregate([
                 {
-                    $match:{user:ObjectID (userId) }
+                    $match:{user:ObjectID(userId)}
                 },
                 {
                     $unwind:'$products'
@@ -79,7 +80,7 @@ module.exports={
     getWishListCount:(userId)=>{
         return new Promise(async(resolve,reject)=>{
             let count = 0
-            let wishList =await db.get().collection(collection.CART).findOne({user:ObjectID(userId)})
+            let wishList =await db.get().collection(collection.WISHLIST).findOne({user:ObjectID(userId)})
             if(wishList){
                 count=wishList.products.length
             }

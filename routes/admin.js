@@ -11,6 +11,7 @@ const sessionChecker =require('../middleware/sessionMiddleware')
 const { Router } = require('express')
 const multer = require('multer')
 const path =require('path')
+const methodOverride = require('method-override')
 
 
 //muter
@@ -44,6 +45,8 @@ const storage = multer.diskStorage({
     }
   })
 
+ router.use(methodOverride('_method')) ;
+
 router.get('/', sessionChecker.adminSessionChecker,admin.adminLoginPage)
 
 router.post('/adminLoginAction',admin.adminLoginAction)
@@ -76,8 +79,8 @@ router.get('/adminAddProduct',sessionChecker.adminSessionChecker,addProduct.admi
 router.get("/adminDeleteOneProduct",sessionChecker.adminSessionChecker,addProduct.adminDeleteProduct)
 router.post("/adminAddNewProduct",sessionChecker.adminSessionChecker,upload.single('image'),addProduct.addNewProduct)
 router.get("/adminGetOneProduct",sessionChecker.adminSessionChecker,addProduct.updateProductDetails)
-router.post('/updateProductDetails',sessionChecker.adminSessionChecker,upload.single('image'),addProduct.updateProductionDetailsAction)
-
+// router.post('/updateProductDetails',sessionChecker.adminSessionChecker,upload.single('image'),addProduct.updateProductionDetailsAction)
+router.put('/editData/:id',upload.single('image'),sessionChecker.adminSessionChecker,addProduct.updateProductionDetailsAction)
 
 //admin user router
 

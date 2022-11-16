@@ -46,8 +46,8 @@ module.exports={
             }
     
           ]).toArray()
-          console.log(total);
-          resolve(total)
+  
+          resolve(total[0].total)
       })
       }
 }

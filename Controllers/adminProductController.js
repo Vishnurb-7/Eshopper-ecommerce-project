@@ -58,15 +58,14 @@ const adminAddProductPage=(req,res)=>{
 
   const updateProductionDetailsAction =(req,res)=>{
     
-        let id  =req.body.id;
+        let id  =req.params.id;
         let newProductData =req.body;
         let newImageId =req.file.filename;
+        console.log(id);
         console.log("data",newImageId)
-        addProduct.editProduct(id, newProductData, newImageId).then(()=>{
-            addProduct.showProduct().then((product)=>{
-                res.render('admin/adminProductPage',{admin:true,title:'PRODUCT CONTROL PAGE',product})
-        
-            })
+        addProduct.editProduct(id, newProductData, newImageId).then((response)=>{
+           
+            res.redirect('/admin/adminProductPage')
         })
     }
   

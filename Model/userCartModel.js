@@ -37,7 +37,7 @@ module.exports={
             }else{
                 let cartObj={
                     user:ObjectID(userId),
-                    products:[proId]
+                    products:[proObj]
                 }
                 db.get().collection(collection.CART).insertOne(cartObj).then((response)=>{
                     resolve()
@@ -76,7 +76,7 @@ module.exports={
                 }
                 
             ]).toArray()
-            console.log(cartItems,"cartitemsmmmmmmmmptoduvt");
+            console.log("cartitemsmmmmmmmmptoduvt",cartItems);
             resolve(cartItems)
         })
     },
@@ -108,17 +108,17 @@ module.exports={
                 {
                     $inc : { "products.$.quantity":details.count}
                 }).then((response)=>{
-                    resolve(true)
+                    resolve({status:true})
                 })
             }
         })
           
     },
-    removeAddToCartProduct:(details)=>{
+    removeCartProduct:(details)=>{
         return new Promise((resolve,reject)=>{
           console.log(details);
           db.get().collection(collection.CART).updateOne(
-            {_id:ObjectID(details.wishList)},
+            {_id:ObjectID(details.cart)},
             {
               $pull:{products:{item:ObjectID(details.product)}}
             }

@@ -17,7 +17,7 @@
                     <tbody class="align-middle">
                         <% for(var i=0;i<products.length;i++) { %>
                         <tr>
-                            <td class="align-middle"><img src="img/product-1.jpg" alt="" style="width: 50px;"> <%= products[i].productDetails.productName%></td>
+                            <td class="align-middle"><img src="img/product-1.jpg" alt="" style="width: 50px;"> <%= products[i].productDetails.productName %></td>
                             <td class="align-middle">₹<%= products[i].productDetails.sellingPrice %></td>
                             <td class="align-middle"><button class="btn btn-sm btn-primary">ADD TO CART</button></td>
                             <td class="align-middle"><button onclick="removeWishListProduct('<%= products[i]._id %>','<%= products[i].productDetails._id %>')"class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button></td>

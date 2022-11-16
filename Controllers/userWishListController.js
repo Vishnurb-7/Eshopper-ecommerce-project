@@ -15,6 +15,7 @@ const userWishListPage= async (req,res)=>{
     } 
     category.showCategory().then((category)=>{
         let userData = req.session.user
+        console.log('hhhhhhhhhhhhhhhhhhhh',products);
         res.render('user/userWishListPage',{admin:false,user:true,category,userData,cartCount,wishListCount,products})
     })
 }

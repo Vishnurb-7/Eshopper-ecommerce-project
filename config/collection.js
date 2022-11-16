@@ -6,5 +6,6 @@ module.exports={
     USER: 'user',
     BANNER:'banner',
     CART:'cart',
-    WISHLIST:'wishlist'
+    WISHLIST:'wishlist',
+    ORDER:'order'
 }
