@@ -61,7 +61,7 @@ router.get('/adminSignOut',admin.adminSignOut)
 
 
 router.get('/adminCategoryPage',sessionChecker.adminSessionChecker,addCategory.adminCategoryPage)
-router.post('/addNewCategory',sessionChecker.adminSessionChecker,addCategory.addNewCategory)
+router.post('/addNewCategory',upload.single('catImage'),sessionChecker.adminSessionChecker,addCategory.addNewCategory)
 router.get("/deleteOneCategory",sessionChecker.adminSessionChecker,addCategory.deleteCategory)
 
 // brand router............
@@ -85,7 +85,10 @@ router.put('/editData/:id',upload.single('image'),sessionChecker.adminSessionChe
 //admin user router
 
 router.get('/adminUserPage',sessionChecker.adminSessionChecker,user.adminUserPage)
-router.get('/adminDeleteOneUser',sessionChecker.adminSessionChecker,user.deleteUser)
+// router.get('/adminDeleteOneUser',sessionChecker.adminSessionChecker,user.deleteUser)
+
+router.post('/usermanagement/block',sessionChecker.adminSessionChecker,user.userBlock)
+router.post('/usermanagement/unblock',sessionChecker.adminSessionChecker,user.userUnblock)
 
 
 //admin banner router

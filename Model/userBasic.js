@@ -4,6 +4,7 @@ const { ObjectId } = require("mongodb");
 
 const bcrypt = require("bcrypt");
 
+
 module.exports = {
   insertUserCredentials: (verified, firstName, lastName, email, password) => {
     return new Promise(async (resolve, reject) => {
@@ -26,7 +27,7 @@ module.exports = {
         .findOne({ email: userData.userEmail });
 
       if (user) {
-        if (user.verified == 1) {
+        if (user.verified == 1 && user.state == 'active') {
           bcrypt.compare(userData.password, user.password).then((status) => {
             if (status) {
               response.status = true;

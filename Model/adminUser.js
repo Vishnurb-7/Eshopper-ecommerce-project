@@ -1,6 +1,8 @@
 const db =require('../config/connection')
 const collection =require('../config/collection');
 const { ObjectId } = require('mongodb');
+const { reject } = require('bcrypt/promises');
+const { response } = require('express');
 
 
 
@@ -13,11 +15,35 @@ module.exports={
         })
     
     },
-    deleteUser:(userId)=>{
-        return new Promise(async(resolve,reject)=>{
-          db.get().collection(collection.USER).deleteOne({_id:ObjectId(userId)}).then((response)=>{
-            resolve(response)
-          })
+    blockUser:(userId)=>{
+      return new Promise ((resolve,reject)=>{
+        db.get().collection(collection.USER).updateOne({_id:ObjectId(userId)},
+          {
+            $set:{
+              state:"blocked"
+            }
+          }
+        
+        ).then((response)=>{
+          resolve(response)
         })
+
+      })
+    },
+    unblockUser:(userId)=>{
+      return new Promise ((resolve,reject)=>{
+        db.get().collection(collection.USER).updateOne({_id:ObjectId(userId)},
+          {
+            $set:{
+              state:"active"
+            }
+          }
+        
+        ).then((response)=>{
+          resolve(response)
+        })
+
+      })
     }
+
 }

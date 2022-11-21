@@ -29,7 +29,7 @@ body {
   }
   
   form {
-    width: 300px;
+    width: 100%;
     margin-left: 20px;
   }
   
@@ -48,7 +48,7 @@ body {
     outline: none;
   }
   input[type="submit"] {
-    width: 300px;
+    width: 360px;
     height: 35px;
     margin-top: 20px;
     border: none;

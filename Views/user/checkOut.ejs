@@ -1,7 +1,6 @@
-
-    <!-- Checkout Start -->
+<!-- Checkout Start -->
 <div class="container-fluid pt-5">
-    <form action="" id="placeOrderForm"></form>
+    <form action="" id="orderFormDetails">
         <div class="row px-xl-5">
             <div class="col-lg-8">
                 <div class="mb-4">
@@ -9,7 +8,7 @@
                     <div class="row">
                         <div class="col-md-6 form-group">
                             <label>First Name</label>
-                            <input class="form-control" type="text" name="firstName" >
+                            <input class="form-control" type="text" name="firstName">
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Last Name</label>
@@ -21,14 +20,14 @@
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Mobile No</label>
-                            <input class="form-control" type="text" name="userPhoneNumber" >
+                            <input class="form-control" type="text" name="userPhoneNumber">
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Address</label>
-                            <input class="form-control" type="text"  name="address">
+                            <input class="form-control" type="text" name="address">
                         </div>
                         <input type="text" name="userId" id="userId" value="<%= userData._id %>" hidden>
-                        
+
                         <div class="col-md-6 form-group">
                             <label>Country</label>
                             <select class="custom-select" name="country">
@@ -248,7 +247,7 @@
                                 <option value="YEM">Yemen</option>
                                 <option value="ZMB">Zambia</option>
                                 <option value="ZWE">Zimbabwe</option>
-                            
+
                             </select>
                         </div>
                         <div class="col-md-6 form-group">
@@ -263,98 +262,44 @@
                             <label>ZIP Code</label>
                             <input class="form-control" type="text" name="pinCode">
                         </div>
-                        <!-- <div class="col-md-12 form-group">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="newaccount">
-                                <label class="custom-control-label" for="newaccount">Create an account</label>
-                            </div>
-                        </div>
-                        <div class="col-md-12 form-group">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="shipto">
-                                <label class="custom-control-label" for="shipto"  data-toggle="collapse" data-target="#shipping-address">Ship to different address</label>
-                            </div>
-                        </div> -->
+                        
                     </div>
                 </div>
-                <div class="collapse mb-4" id="shipping-address">
-                    <h4 class="font-weight-semi-bold mb-4">Shipping Address</h4>
-                    <div class="row">
-                        <div class="col-md-6 form-group">
-                            <label>First Name</label>
-                            <input class="form-control" type="text" placeholder="John">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Last Name</label>
-                            <input class="form-control" type="text" placeholder="Doe">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>E-mail</label>
-                            <input class="form-control" type="text" placeholder="example@email.com">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Mobile No</label>
-                            <input class="form-control" type="text" placeholder="+123 456 789">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Address Line 1</label>
-                            <input class="form-control" type="text" placeholder="123 Street">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Address Line 2</label>
-                            <input class="form-control" type="text" placeholder="123 Street">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Country</label>
-                            <select class="custom-select">
-                                <option selected>United States</option>
-                                <option>Afghanistan</option>
-                                <option>Albania</option>
-                                <option>Algeria</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>City</label>
-                            <input class="form-control" type="text" placeholder="New York">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>State</label>
-                            <input class="form-control" type="text" placeholder="New York">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>ZIP Code</label>
-                            <input class="form-control" type="text" placeholder="123">
-                        </div>
-                    </div>
-                </div>
+
             </div>
-                <div class="col-lg-4">
+            <div class="col-lg-4">
                 <div class="card border-secondary mb-5">
                     <div class="card-header bg-secondary border-0">
                         <h4 class="font-weight-semi-bold m-0">Order Total</h4>
                     </div>
                     <div class="card-body">
                         <% for(var i=0;i<products.length;i++) { %>
-                        <h5 class="font-weight-medium mb-3">Products</h5>
-                        <div class="d-flex justify-content-between">
-                            <p><%= products[i].productDetails.productName %></p>
-                            <p>₹<%= products[i].productDetails.sellingPrice%></p>
-                        </div>
-                        <% } %> 
-                        <hr class="mt-0">
-                        <div class="d-flex justify-content-between mb-3 pt-1">
-                            <h6 class="font-weight-medium">Subtotal</h6>
-                            <h6 class="font-weight-medium"><%=total%></h6>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <h6 class="font-weight-medium">Shipping</h6>
-                            <h6 class="font-weight-medium">3%</h6>
-                        </div>
+                            <h5 class="font-weight-medium mb-3">Products</h5>
+                            <div class="d-flex justify-content-between">
+                                <p>
+                                    <%= products[i].productDetails.productName %>
+                                </p>
+                                <p>₹<%= products[i].productDetails.sellingPrice%>
+                                </p>
+                            </div>
+                            <% } %>
+                                <hr class="mt-0">
+                                <div class="d-flex justify-content-between mb-3 pt-1">
+                                    <h6 class="font-weight-medium">Subtotal</h6>
+                                    <h6 class="font-weight-medium">
+                                        <%=total%>
+                                    </h6>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="font-weight-medium">Shipping</h6>
+                                    <h6 class="font-weight-medium">3%</h6>
+                                </div>
                     </div>
                     <div class="card-footer border-secondary bg-transparent">
                         <div class="d-flex justify-content-between mt-2">
                             <h5 class="font-weight-bold">Total</h5>
-                            <h5 class="font-weight-bold">₹<%=total%></h5>
+                            <h5 class="font-weight-bold">₹<%=total%>
+                            </h5>
                         </div>
                     </div>
                 </div>
@@ -363,110 +308,122 @@
                         <h4 class="font-weight-semi-bold m-0">Payment</h4>
                     </div>
                     <div class="card-body">
-                        <div class="form-check"> 
-                            <input class="form-check-input " type="radio" name="payment_method" id="online_payment" value="online_payment">
+                        <div class="form-check">
+                            <input class="form-check-input " type="radio" name="payment_method" id="online_payment"
+                                value="online_payment">
                             <h5><label class="form-check-label " for="online_payment">
-                                Online Payment 
-                              </label></h5>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input " type="radio" name="payment_method" id="cash_on_delivery" value="cash_on_delivery" >
+                                    Online Payment
+                                </label></h5>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input " type="radio" name="payment_method" id="cash_on_delivery"
+                                value="cash_on_delivery">
                             <h5><label class="form-check-label " for="cash_on_delivery">
-                                Cash On Delivery
-                               </label></h5>
-                          </div>
+                                    Cash On Delivery
+                                </label></h5>
+                        </div>
 
                     </div>
                     <div class="card-footer border-secondary bg-transparent">
-                        <button type="submit" class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3">Place Order</button>
+                        <button type="submit" class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3">Place
+                            Order</button>
                     </div>
-                 </div>
-     
-             </div>
+                </div>
+
+            </div>
         </div>
     </form>
 
-    <!-- Checkout End -->
+</div>
+
+<!-- Checkout End -->
 
 
 
 
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+<!-- Back to Top -->
+<a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
-    <!-- Contact Javascript File -->
-    <script src="mail/jqBootstrapValidation.min.js"></script>
-    <script src="mail/contact.js"></script>
+<!-- Contact Javascript File -->
+<script src="mail/jqBootstrapValidation.min.js"></script>
+<script src="mail/contact.js"></script>
 
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
-   
+<!-- Template Javascript -->
+<script src="js/main.js"></script>
 
-    <script>
-        $("#placeOrderForm").submit((e)=>{
-            e.preventDefault()
-            $.ajax({
-                url:'/placeOrder',
-                method:'post',
-                data:$('#placeOrderForm').serialize(),
-                success:(response)=>{
-                    alert(response)
-                    if(response.codSuccess)
-                    {
-                        location.href ='/orderPlacedPage'
-                    }
-                    else
-                    {
-                        razorpayPayment(response)
-                    }
+
+<script>
+
+    $("#orderFormDetails").submit((e) => {
+        console.log("ddd");
+        e.preventDefault()
+        $.ajax({
+            url: '/placeOrderDetails',
+            method: 'post',
+            data: $('#orderFormDetails').serialize(),
+            success: (response) => {
+                alert(response)
+                if (response.codeSuccess ) {
+                    location.href = '/orderPlacedPage'
                 }
-            })
+                else {
+                    razorpayPayment(response)
+                }
+            }
         })
-        function razorpayPayment(order){
-            console.log('/////     order   ////////    ',order);
-            var options = {
-                    "key": "rzp_test_ZlCC11J6GndceG", // Enter the Key ID generated from the Dashboard
-                    "amount": order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-                    "currency": "INR",
-                    "name": "E FIT",
-                    "description": "Test Transaction",
-                     "image": "https://example.com/your_logo",
-                     "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-                    "callback_url": "https://eneqd3r9zrjok.x.pipedream.net/",
-                    "handler":function(response){
-                        verifyPayment(response,order)
-                    },
-                    "prefill": {
-                            "name": "Gaurav Kumar",
-                            "email": "gaurav.kumar@example.com",
-                            "contact": "9999999999"
-                            },
-                    "notes": {
-                             "address": "Razorpay Corporate Office"
-                              },
-                    "theme": {
-                             "color": "#3399cc"
-                             }
-             };
-            var rzp1 = new Razorpay(options);
-            rzp1.open();
-        }
-        function verifyPayment(payment,order){
-            $.ajax({
-                url:'/verifyPayment',
-                data:{
-                    payment,
-                    order
-                },
-                method:'post'
-            })
-        }
-    </script>
+    })
 
+
+
+    function razorpayPayment(order) {
+        console.log('/////     order   ////////    ', order)
+        var options = {
+            "key": "rzp_test_zU235rfIbz2kkL", // Enter the Key ID generated from the Dashboard
+            "amount": order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+            "currency": "INR",
+            "name": "E SHOPPER",
+            "description": "Test Transaction",
+            "image": "https://example.com/your_logo",
+            "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+            "callback_url": "https:eneqd3r9zrjok.x.pipedream.net/",
+            "handler": function (response) {
+                verifyPayment(response, order)
+            },
+            "notes": {
+                "address": "Razorpay Corporate Office"
+            },
+            "theme": {
+                "color": "#3399cc"
+            }
+        };
+        var rzp1 = new Razorpay(options);
+        rzp1.open();
+    }
+    function verifyPayment(payment, order) {
+    
+        $.ajax({
+            url: '/verifyPayment',
+            data: {
+                payment,
+                order
+            },
+            method: 'post',
+            success:(response)=>{
+            if(response.status) {
+                    location.href = '/orderPlacedPage'
+                }
+                else {
+                    alert('payment failed')
+                }
+            }
+        })
+    }
+
+</script>

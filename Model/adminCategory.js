@@ -3,11 +3,11 @@ const collection =require('../config/collection');
 const { ObjectId } = require('mongodb');
 
 module.exports ={
-    doCategory:(addCategory)=>{
+    doCategory:(imageId,addCategory)=>{
         return new Promise (async(resolve,reject)=>{
            
-            db.get().collection(collection.ADD_CATEGORY).insertOne(addCategory).then((data)=>{
-                resolve (data)
+            db.get().collection(collection.ADD_CATEGORY).insertOne(imageId,addCategory).then((data)=>{
+                resolve.apply(data)
             })
         })
     },

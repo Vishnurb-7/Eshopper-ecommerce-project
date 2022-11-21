@@ -6,9 +6,11 @@ const sessionChecker=require('../middleware/sessionMiddleware')
 const userCart=require('../Controllers/userCartController')
 const wishList=require('../Controllers/userWishListController')
 const proceedToCheckOut=require('../Controllers/userCheckOutController')
+const placeOrder =require('../Controllers/userPlaceOrderController')
+const categoryController= require('../Controllers/userCategoryController')
 
 
-//user router
+// user router
 
 router.get("/",userBasic.showLandingPage)
 router.get('/showUserLoginPage',userBasic.showLoginPage)
@@ -24,6 +26,10 @@ router.post("/otpVerification",userBasic.verifyOtp)
 router.get('/viewProductDetailsPage',sessionChecker.userSessionChecker,userProductDetails.showProductDetails)
 
 
+//category
+
+
+router.get('/categoryBased',categoryController.showCategoryPage)
 //userCart
 
 router.get('/userCart',sessionChecker.userSessionChecker,userCart.userCartPage)
@@ -41,6 +47,11 @@ router.delete('/removeWishListProduct',sessionChecker.userSessionChecker,wishLis
 
 
 router.get('/proceedToCheckOut',sessionChecker.userSessionChecker,proceedToCheckOut.showCheckOutPage)
+
+//user place order
+router.post('/placeOrderDetails',sessionChecker.userSessionChecker,placeOrder.placeOrder)
+router.get('/orderPlacedPage',sessionChecker.userSessionChecker,placeOrder.showOrderPlaced)
+router.post('/verifyPayment',sessionChecker.userSessionChecker,placeOrder.verifyPayment)
 
 
 module.exports=router

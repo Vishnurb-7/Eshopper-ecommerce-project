@@ -20,8 +20,8 @@
             <th scope="col">SNO</th>
             <th scope="col">FIRST NAME</th>
             <th scope="col">EMAIL</th>
-            <th scope="col">BLOCKED USER</th>
-            <th scope="col">UNBLOCKED USER</th>
+            <th scope="col">ACTION</th>
+            
             <!-- <th scope="col">DELETE</th> -->
        
           </tr>
@@ -32,9 +32,15 @@
             <th scope="row"><%= i+1 %></th>
             <td><%= Users[i].firstName %></td>
             <td><%= Users[i].email %></td>
-            <td><input class="btn btn-primary" type="button" value="BLOCK"> </td>
-            <td><input class="btn btn-warning" type="button" value="UNBLOCK"></td>
-            <!-- <td><a href="/admin/adminDeleteOneUser?id=<%= Users[i]._id %>" class="btn btn-danger">DELETE</a></td> -->
+            
+            <td>
+              <% if(Users[i].state=='active') { %>
+              <input class="btn btn-primary" type="button" onclick="userBlock('<%= Users[i]._id %>')" value="BLOCK">
+              <% } else { %>
+            <input class="btn btn-warning" type="button" onclick="userUnblock('<%= Users[i]._id %>')" value="UNBLOCK">
+            <% } %>
+          </td>
+            
           </tr>
           <% } %>
         </tbody>
@@ -56,4 +62,32 @@ sidebarBtn.onclick = function() {
 $(document).ready(function () {
     $('#userTable').DataTable();
 });
+
+
+
+function userBlock(userId){
+    fetch('/admin/usermanagement/block',{
+      method:'post',
+      headers:{
+        'Content-Type':'application/json'   
+      },
+      body:JSON.stringify({userId})
+    }).then(()=>{
+      window.location.reload()
+    }).catch((error)=>{
+      console.error("error",error);
+    })
+  }
+
+  function userUnblock(userId){
+    fetch('/admin/usermanagement/unblock',{
+      method:'post',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({userId})
+    }).then(()=>{
+      window.location.reload()
+    }).catch((error)=>{
+      console.error("error",error);
+    })
+  }
  </script>

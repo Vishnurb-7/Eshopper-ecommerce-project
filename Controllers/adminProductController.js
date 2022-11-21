@@ -57,7 +57,7 @@ const adminAddProductPage=(req,res)=>{
     }
 
   const updateProductionDetailsAction =(req,res)=>{
-    
+    console.log("file:",req.file.id);
         let id  =req.params.id;
         let newProductData =req.body;
         let newImageId =req.file.filename;

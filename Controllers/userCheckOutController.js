@@ -24,7 +24,8 @@ const showCheckOutPage = async (req, res) => {
         cartCount,
         category,
         products,
-        total,wishListCount
+        total,
+        wishListCount
       });
     });
   };
