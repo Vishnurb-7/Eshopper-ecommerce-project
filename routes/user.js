@@ -8,6 +8,7 @@ const wishList=require('../Controllers/userWishListController')
 const proceedToCheckOut=require('../Controllers/userCheckOutController')
 const placeOrder =require('../Controllers/userPlaceOrderController')
 const categoryController= require('../Controllers/userCategoryController')
+const userProfileController = require('../Controllers/userProfileController')
 
 
 // user router
@@ -52,6 +53,19 @@ router.get('/proceedToCheckOut',sessionChecker.userSessionChecker,proceedToCheck
 router.post('/placeOrderDetails',sessionChecker.userSessionChecker,placeOrder.placeOrder)
 router.get('/orderPlacedPage',sessionChecker.userSessionChecker,placeOrder.showOrderPlaced)
 router.post('/verifyPayment',sessionChecker.userSessionChecker,placeOrder.verifyPayment)
+
+
+// user profile
+
+router.get('/userProfilePage',sessionChecker.userSessionChecker,userProfileController.showUserProfile)
+
+router.get('/editProfile',sessionChecker.userSessionChecker,userProfileController.editProfile)
+
+router.post('/editedUserProfile',sessionChecker.userSessionChecker,userProfileController.editProfileDetails)
+
+router.get('/changePassword',sessionChecker.userSessionChecker,userProfileController.showPasswordChangePage)
+
+router.post('/updatePassword',sessionChecker.userSessionChecker,userProfileController.updatePassword)
 
 
 module.exports=router
