@@ -7,6 +7,7 @@ const addBrand=require('../Controllers/adminBrandController')
 const addProduct=require('../Controllers/adminProductController')
 const user= require('../Controllers/adminUserController')
 const banner =require('../Controllers/adminBannerController')
+const adminCoupon = require('../Controllers/adminCouponController')
 const sessionChecker =require('../middleware/sessionMiddleware')
 const { Router } = require('express')
 const multer = require('multer')
@@ -96,5 +97,12 @@ router.post('/usermanagement/unblock',sessionChecker.adminSessionChecker,user.us
 router.get("/adminBannerPage",sessionChecker.adminSessionChecker,banner.adminBannerPage)
 router.post('/addNewBanner',sessionChecker.adminSessionChecker,upload.single('image'),banner.addNewBanner)
 router.delete("/deleteBanner",sessionChecker.adminSessionChecker,banner.deleteBanner)
+
+
+//coupon router
+
+router.get("/adminCouponPage",sessionChecker.adminSessionChecker,adminCoupon.showCouponPage)
+router.post('/addNewCoupon',sessionChecker.adminSessionChecker,adminCoupon.addCoupon)
+router.delete('/deleteCoupon',sessionChecker.adminSessionChecker,adminCoupon.deleteCoupon)
 
 module.exports=router

@@ -15,7 +15,7 @@ var instance = new Razorpay({
 module.exports = {
     placeOrder: (order, products, total) => {
       return new Promise((resolve, reject) => {
-        console.log(order, products, total);
+        console.log('placeOrderListttttttttttttt',order, products, total);
         let status =
           order.payment_method === "cash_on_delivery" ? "placed" : "pending";
         let orderObj = {

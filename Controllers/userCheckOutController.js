@@ -30,7 +30,43 @@ const showCheckOutPage = async (req, res) => {
     });
   };
 
+  
+const showCheckingOutPage = async(req,res)=>{
+  
+  let finalTotal = parseInt(req.body.TOTAL)//cart total
+  let details = req.body
+  details.TOTAL = parseInt(details.TOTAL)
+  if(details.couponCode==='')
+  {
+    let shippingCharge =  (3/100)*details.TOTAL
+    finalTotal = details.TOTAL + shippingCharge
+    res.json(finalTotal)
+  }
+  else{
+    let couponDetails = await couponModel.getCouponDetails(details.couponCode)
+    if(couponDetails)
+    {
+      await couponModel.getDiscount(couponDetails, details.TOTAL).then((response) => {
+        finalTotal = response.discountedTotal
+        finalTotal = Math.round(finalTotal)
+        res.json(finalTotal)
+
+      });
+    }
+    else
+    {
+      let shippingCharge =  (3/100)*details.TOTAL
+      finalTotal = details.TOTAL + shippingCharge
+      res.json(finalTotal) 
+    }
+  }
+}
+
+
+
+
   module.exports={
-    showCheckOutPage
+    showCheckOutPage,
+    showCheckingOutPage
   }
   

@@ -9,7 +9,7 @@ const proceedToCheckOut=require('../Controllers/userCheckOutController')
 const placeOrder =require('../Controllers/userPlaceOrderController')
 const categoryController= require('../Controllers/userCategoryController')
 const userProfileController = require('../Controllers/userProfileController')
-
+const couponController = require('../Controllers/userCouponController')
 
 // user router
 
@@ -39,6 +39,8 @@ router.post('/add-to-cart/:id',sessionChecker.userSessionChecker,userCart.addToC
 router.post('/changeProductQuantity',sessionChecker.userSessionChecker,userCart.cartChangeProductQuantity)
 router.delete('/removeCartProduct',sessionChecker.userSessionChecker,userCart.removeCartOneProduct)
 
+router.post("/cart/applyCoupon",sessionChecker.userSessionChecker,couponController.applyCoupon)
+
 
 
 //user wishlist
@@ -48,12 +50,18 @@ router.delete('/removeWishListProduct',sessionChecker.userSessionChecker,wishLis
 
 
 router.get('/proceedToCheckOut',sessionChecker.userSessionChecker,proceedToCheckOut.showCheckOutPage)
+router.post('checkOut/proceedToCheckingOut',sessionChecker.userSessionChecker.apply,proceedToCheckOut.showCheckingOutPage)
 
 //user place order
 router.post('/placeOrderDetails',sessionChecker.userSessionChecker,placeOrder.placeOrder)
 router.get('/orderPlacedPage',sessionChecker.userSessionChecker,placeOrder.showOrderPlaced)
 router.post('/verifyPayment',sessionChecker.userSessionChecker,placeOrder.verifyPayment)
 
+
+
+router.get('/viewOrders',sessionChecker.userSessionChecker,userProfileController.viewOrders)
+
+router.get('/viewOrderProducts',sessionChecker.userSessionChecker,userProfileController.viewOrderProducts)
 
 // user profile
 

@@ -9,7 +9,7 @@ const bcrypt = require('bcrypt')
 module.exports ={
     getUserOrder:(userId)=>{
         return new Promise (async(resolve,reject)=>{
-            let orders = await db.get().collection(collection.USER).find({userId:ObjectID(userId)}).toArray()
+            let orders = await db.get().collection(collection.ORDER).find({userId:ObjectID(userId)}).toArray()
             resolve(orders)
         })    
     },
@@ -29,11 +29,11 @@ module.exports ={
     },
     updatePassword:(newPassword,user)=>{
         return new Promise (async(resolve,reject)=>{
-            console.log('passsss',newPassword);
+            // console.log('passsss',newPassword);
 
-            console.log('newwPasssss',user);
+            // console.log('newwPasssss',user);
             newPassword = await bcrypt.hash(newPassword.password,10)
-            console.log('passssshhhhhhhhhhhh',newPassword);
+            // console.log('passssshhhhhhhhhhhh',newPassword);
 
             db.get().collection(collection.USER).updateOne({_id:ObjectID(user._id)},
             {
@@ -45,5 +45,37 @@ module.exports ={
             resolve()
 
         })
-    }
+    },
+
+    
+    getOrderProductDetails:(orderId)=>{
+        return new Promise(async(resolve,reject)=>{
+          let orders = await db.get().collection(collection.ORDER).aggregate([
+            {
+              $match:{_id:ObjectID(orderId)}
+            },
+            {
+              $unwind:'$products'
+            },
+            {
+              $lookup:{
+                from:collection.PRODUCT,
+                localField:'products.item',
+                foreignField:'_id',
+                as:'orderProducts'
+              }
+            },
+            {
+              $project:{
+                _id:0,
+                orderProducts:1
+              }
+            }
+          ]).toArray()
+          console.log('this is orders',orders);
+          resolve(orders)
+        })
+      }
+
+
 }

@@ -37,29 +37,6 @@ const deleteBanner=(req,res)=>{
 
 
 
-// const deleteBanner = (req,res)=>{
-//     let id = req.body.bannerId
-//     console.log("bannererrrrrr",id)
-//     bannerModel.deleteBanner(id).then((response)=>{
-    
-//       res.json(response)
-//     })
-//     }
-
-
-// const adminDeleteProduct=(req,res)=>{
-//     if(req.session.admin){
-//         let productId = req.query.id
-//         addProduct.deleteProduct(productId).then((response)=>{
-//             res.redirect('/admin/adminProductPage')
-//         })
-//     }else{
-//         res.render('admin/adminLogin',{admin:false,user:false})
-//     }
-   
-// }
-
-
 
 module.exports={
     adminBannerPage,

@@ -11,7 +11,7 @@ const viewOrders = async(req,res)=>{
     let wishListCount = null
     if (req.session.user) {
       cartCount = await cartModel.getCartCount(req.session.user._id);
-      wishListCount = await wishListMOdel.getWishListCount(req.session.user._id)
+      wishListCount = await wishListModel.getWishListCount(req.session.user._id)
     }
     console.log('this is my orders',orders);
     category.showCategory().then((category) => {
@@ -29,6 +29,38 @@ const viewOrders = async(req,res)=>{
     }
 
 
+
+    const viewOrderProducts = async(req,res)=>{
+      let cartCount = null;
+      let wishListCount = null
+      if (req.session.user) {
+        cartCount = await cartModel.getCartCount(req.session.user._id);
+        wishListCount = await wishListModel.getWishListCount(req.session.user._id)
+      }
+      category.showCategory().then(async(category) => {
+        let userData = req.session.user;
+        let userDetails = await userProfileModel.findUser(userData._id)
+        let orderId = req.query.id
+        console.log('this is user order id ',orderId);
+        let products = await userProfileModel.getOrderProductDetails(orderId)
+        let orderProducts = products?products:''
+        
+        console.log('this is products of order ====>>>>>>>',products);
+    
+        res.render("user/userViewOrderProducts", {
+          admin:false,
+          user:true,
+          userData,
+          cartCount,
+          category,
+          wishListCount,
+          userDetails,
+          products
+        });
+
+    })
+  }
+
 const showUserProfile = async(req,res)=>{
     let orders = await userProfileModel.getUserOrder(req.session.user._id)
     let cartCount = null;
@@ -41,6 +73,7 @@ const showUserProfile = async(req,res)=>{
     category.showCategory().then(async(category) => {
       let userData = req.session.user;
       let userDetails = await userProfileModel.findUser(userData._id)
+      let orderId = req.query.id
       console.log('this is display user',userDetails)
         res.render("user/userProfilePage", {
           admin:false,
@@ -162,6 +195,9 @@ const editProfileDetails = async(req,res)=>{
       })
        
   }
+
+
+  
     
     module.exports = {
         viewOrders,
@@ -169,5 +205,7 @@ const editProfileDetails = async(req,res)=>{
         editProfile,
         editProfileDetails,
         showPasswordChangePage,
-        updatePassword
+        updatePassword,
+        viewOrderProducts
+ 
     }
