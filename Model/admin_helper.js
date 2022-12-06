@@ -12,17 +12,17 @@ module.exports={
             if(admin){
                 bcrypt.compare(adminData.password,admin.password).then((status)=>{
                     if(status){
-                        console.log("login success");
+                        // console.log("login success");
                         response.user=admin
                         response.status=true
                         resolve(response)
                     }else{
-                        console.log("login failed")
+                        // console.log("login failed")
                         resolve({status:false})
                     }
                 })
             }else{
-                console.log("login not success")
+                // console.log("login not success")
                 resolve({status:false})
             }
         })

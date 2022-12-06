@@ -14,7 +14,8 @@ module.exports={
 
     viewProductDetails:(productId)=>{
         return new Promise((resolve,reject)=>{
-             db.get().collection(collection.PRODUCT).findOne({_id:ObjectId(productId)}).then((product)=>{
+           let bbbb=  db.get().collection(collection.PRODUCT).findOne({_id:ObjectId(productId)}).then((product)=>{
+           
               resolve(product)
               
             })

@@ -14,20 +14,20 @@ const showCategoryPage =async(req,res)=>{
     let cartCount = null 
      let wishListCount = null
     let catName = req.query.catName
-    console.log('mk log',catName);
+    // console.log('mk log',catName);
     
     if(req.session.user){
-        console.log("cartciut id :",req.session.user._id);
+        // console.log("cartciut id :",req.session.user._id);
 
-    console.log("ivdethi");
+    // console.log("ivdethi");
     categoryModel.showCategoryBasedProducts(catName).then(async(products)=>{
-        console.log('prooooo',products);
+        // console.log('prooooo',products);
 
      cartCount= await cartModel.getCartCount(req.session.user._id)
-     console.log("cart count",cartCount);
+    //  console.log("cart count",cartCount);
      wishListCount= await wishListModel.getWishListCount(req.session.user._id)
         userProductDisplay.displayProduct().then((productDetails)=>{
-            console.log("product count",productDetails);
+            // console.log("product count",productDetails);
             categoryDisplay.showCategory().then((category)=>{
             
                     let userData=req.session.user
@@ -42,7 +42,7 @@ const showCategoryPage =async(req,res)=>{
         categoryModel.showCategoryBasedProducts(catName).then((products)=>{
             userProductDisplay.displayProduct().then((productDetails)=>{
                 categoryDisplay.showCategory().then(async(category)=>{
-                    console.log("cartciut id :",req.session.user);
+                    // console.log("cartciut id :",req.session.user);
                     cartCount= await cartModel.getCartCount(req.session.user._id)
                     wishListCount= await wishListModel.getWishListCount(req.session.user._id)
                     let userData=req.session.user

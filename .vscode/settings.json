@@ -17,16 +17,22 @@
         "emailcheck",
         "eneqd",
         "newuser",
+        "orderplaced",
         "passwordcheck",
         "productid",
         "razorpay",
         "signup",
+        "swal",
         "usercheck",
         "useremail",
         "userid",
+        "userlength",
         "usermanagement",
         "userpassword",
         "wkwhsremxdzqqjsg",
         "zrjok"
+    ],
+    "cSpell.words": [
+        "adminview"
     ]
 }

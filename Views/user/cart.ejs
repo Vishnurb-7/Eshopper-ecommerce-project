@@ -86,7 +86,8 @@
                             <h5 class="font-weight-bold"  id="final_total">
                               ₹<%=total%></h5>
                         </div>
-                        <a href="/proceedToCheckOut" class="btn btn-block btn-primary my-3 py-3">Proceed To Checkout</a>
+
+                        <button  class="btn btn-block btn-primary my-3 py-3"  onclick="proceedToCheckOut()">Proceed To Checkout</button>
                     </div>
                 </div>
             </div>
@@ -98,12 +99,28 @@
 
 
 <script>
+
+
+function proceedToCheckOut()
+        {
+            
+            let finalTotal = document.getElementById('final_total').innerHTML
+            fetch('/cart/proceedToCheckOut?FINALTOTAL='+finalTotal,
+            {
+                method:'get'
+            }
+            ).then(res => res.json()).then((data)=>{
+            location.href="/proceedToCheckOut?finalTotal="+data
+        })
+        }
+
+
     function changeQuantity(cartId,productId,userId,count,finalTotal)
     {
 
         let quantity = parseInt(document.getElementById(productId).innerHTML)
         count = parseInt(count)
-        // console.log(count,'uuuuuuuuu');
+   
         $.ajax({
             url:'/changeProductQuantity',
             data:{
@@ -162,11 +179,11 @@
             body:JSON.stringify(
                 {couponCode})
         }).then(res => res.json()).then(data=>{
-            console.log('jhhghjgghhjgjgjdaataa',data.discount);
+          
 
             if(data.couponStatus == true)
             {
-                console.log('datttaaaaaaafirsttt',data);
+             
                 message.innerHTML == ''
                 discountlDisplay.innerHTML = data.discount
                 finalTotal.innerHTML = data.discountedTotal
@@ -175,32 +192,19 @@
 
             else 
             {
-                console.log('datttaaaaaaaseconddd',data);
+            
                 message.innerHTML= 'COUPON NOT ACCEPTABLE'
                 discountlDisplay.innerHTML = data.discount
                 finalTotal.innerHTML = data.discountedTotal
 
             }
         })
-        console.log('datttaaaaaaa',data);
+
       }
 
 
-      function proceedToCheckout(TOTAL){
-        let couponCode = ''
-        couponCode = document.getElementById('couponCode').value.toUpperCase()
-        fetch('/cart/proceedToCheckingOut',{
-            method:'post',
-            headers:{'Content-Type':'application/json'},
-            body:JSON.stringify(
-                {couponCode,TOTAL})
-        }).then(res => res.json()).then((data)=>{
-            console.log('final total ==>>',data);
-            window.alert(data)
-            location.href="/checkOut?finalTotal="+data
-        })
+     
 
-        }
       
 
 

@@ -15,7 +15,7 @@ var instance = new Razorpay({
 module.exports = {
     placeOrder: (order, products, total) => {
       return new Promise((resolve, reject) => {
-        console.log('placeOrderListttttttttttttt',order, products, total);
+        // console.log('placeOrderListttttttttttttt',order, products, total);
         let status =
           order.payment_method === "cash_on_delivery" ? "placed" : "pending";
         let orderObj = {
@@ -57,13 +57,13 @@ module.exports = {
         .get()
         .collection(collection.CART)
         .findOne({ user: ObjectID(userId) });
-      console.log(cart);
+      // console.log(cart);
       resolve(cart.products);
     });
   },
   generateRazorpay: (orderId,total) => {
     return new Promise((resolve, reject) => {
-      console.log(total);
+      // console.log(total);
       total = parseInt(total)
       var options = {
         amount: total*100,
@@ -78,7 +78,7 @@ module.exports = {
         }
         else
         {
-          console.log("New Order = ",order)
+          // console.log("New Order = ",order)
           resolve(order)
         }
         

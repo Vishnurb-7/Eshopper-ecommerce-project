@@ -112,7 +112,7 @@ module.exports = {
         count = cart.products.length;
       }
       resolve(count);
-      console.log('count',count);
+      // console.log('count',count);
     });
   },
 

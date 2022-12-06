@@ -36,10 +36,10 @@ const adminAddProductPage=(req,res)=>{
             addToNewlyArrivedProduct
 
         }=req.body
-        console.log(req.file)
+        // console.log(req.file)
     
         addProduct.insertProduct({
-            picture:req.file.filename,
+            picture:req.file.path,
             productName,
             actualPrice,
             sellingPrice,
@@ -57,12 +57,12 @@ const adminAddProductPage=(req,res)=>{
     }
 
   const updateProductionDetailsAction =(req,res)=>{
-    console.log("file:",req.file.id);
+    // console.log("file:",req.file.id);
         let id  =req.params.id;
         let newProductData =req.body;
-        let newImageId =req.file.filename;
-        console.log(id);
-        console.log("data",newImageId)
+        let newImageId =req.file.path;
+        // console.log(id);
+        // console.log("data",newImageId)
         addProduct.editProduct(id, newProductData, newImageId).then((response)=>{
            
             res.redirect('/admin/adminProductPage')

@@ -15,7 +15,7 @@ module.exports = {
       displayCoupon:()=>{
         return new Promise(async(resolve,reject)=>{
           let coupons = await db.get().collection(collection.COUPON).find().toArray()
-          console.log("couponnnn",coupons);
+          // console.log("couponnnn",coupons);
           resolve(coupons)
         })
       },

@@ -41,11 +41,11 @@ const viewOrders = async(req,res)=>{
         let userData = req.session.user;
         let userDetails = await userProfileModel.findUser(userData._id)
         let orderId = req.query.id
-        console.log('this is user order id ',orderId);
+        // console.log('this is user order id ',orderId);
         let products = await userProfileModel.getOrderProductDetails(orderId)
         let orderProducts = products?products:''
         
-        console.log('this is products of order ====>>>>>>>',products);
+        // console.log('this is products of order ====>>>>>>>',products);
     
         res.render("user/userViewOrderProducts", {
           admin:false,
@@ -74,7 +74,7 @@ const showUserProfile = async(req,res)=>{
       let userData = req.session.user;
       let userDetails = await userProfileModel.findUser(userData._id)
       let orderId = req.query.id
-      console.log('this is display user',userDetails)
+      // console.log('this is display user',userDetails)
         res.render("user/userProfilePage", {
           admin:false,
           user:true,
@@ -179,8 +179,8 @@ const editProfileDetails = async(req,res)=>{
     category.showCategory().then(async(category) => {
       let userData = req.session.user;
       let userDetails = await userProfileModel.findUser(userData._id)
-      console.log("hhhhhhhhhiiii",req.body);
-      console.log("hhhhhhhhhiiii",userData);
+      // console.log("hhhhhhhhhiiii",req.body);
+      // console.log("hhhhhhhhhiiii",userData);
       userProfileModel.updatePassword(req.body,userData).then(()=>{
         res.render("user/userProfilePage", {
           admin:false,

@@ -54,7 +54,7 @@
         <th scope="col">SNO</th>
         <th scope="col">CATEGORY NAME</th>
         <th scope="col">IMAGE</th>
-        <th scope="col">EDIT CATEGORY</th>
+      
         <th scope="col">DELETE CATEGORY</th>
 
       </tr>
@@ -68,9 +68,9 @@
           <td>
             <%= category[i].newCategory %>
           </td>
-          <td><img src="/images/<%=category[i].picture %>" style="width: 4em; height: 4em;" alt=""></td>
-          <td> <a href="" class="btn btn-warning">EDIT</a></td>
-          <td><a href="/admin/deleteOneCategory?id=<%= category[i]._id %>" class="btn btn-danger">DELETE</a></td>
+          <td><img src="<%=category[i].picture %>" style="width: 4em; height: 4em;" alt=""></td>
+
+          <td><a href="#" class="btn btn-danger" onclick="deleteCategory('<%= category[i]._id %>')">DELETE</a></td>
         </tr>
         <% } %>
 
@@ -103,5 +103,41 @@
 $(document).ready(function () {
     $('#categoryTable').DataTable();
 });
+
+
+function deleteCategory(categoryId){
+  swal({
+  title: "DELETE",
+  text: "DO YOU WANT TO DELETE THIS CATEGORY",
+  icon: "warning",
+  buttons: ["CANCEL","OK"],
+}).then(val=>{
+  fetch('/admin/deleteCategory?id='+categoryId,
+  {
+    method:'delete'
+  }).then(res=> res.json()).then(data=>{
+    if(data.status){
+      swal({
+        title:'SUCCESS',
+        text:"CATEGORY SUCCESSFULLY DELETED",
+        icon:'success',
+        button:'OK'
+      }).then(val=>{
+        location.reload()
+      })
+    }
+    else{
+      swal({
+        title:'WARNING',
+        text:'CATEGORY ALREADY IN USE',
+        icon:'warning',
+        button:'OK'
+      }).then(val=>{
+        location.reload()
+      })
+    }
+  })
+})
+}
 
 </script>

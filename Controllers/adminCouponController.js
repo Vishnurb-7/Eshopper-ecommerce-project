@@ -11,7 +11,7 @@ const showCouponPage = (req,res)=>{
     couponModel.addCoupon(req.body).then(()=>{
       couponModel.displayCoupon().then((availableCoupons)=>{
 
-        console.log('addcoupon reached');
+        // console.log('addcoupon reached');
   
         res.render('admin/adminCouponPage',{admin:true,user:false,title:'COUPON CONTROL PAGE',availableCoupons})
       })

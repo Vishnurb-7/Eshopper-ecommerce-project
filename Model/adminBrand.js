@@ -29,7 +29,7 @@ module.exports={
         return new Promise(async(resolve,reject)=>{
           let brandDetails = await db.get().collection(collection.BRAND).findOne({ _id:ObjectId(brandId)})
           let products  = await db.get().collection(collection.PRODUCT).find({brandName:brandDetails.newBrand}).toArray()
-          console.log('the products of this category is',products);
+          // console.log('the products of this category is',products);
           resolve(products)
         })
       }

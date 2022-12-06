@@ -73,7 +73,7 @@ module.exports={
                 }
                 
             ]).toArray()
-            console.log(wishListItems,"wishlistitemmmmmmmmmm");
+            // console.log(wishListItems,"wishlistitemmmmmmmmmm");
             resolve(wishListItems)
         })
     },

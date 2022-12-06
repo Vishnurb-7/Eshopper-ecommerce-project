@@ -15,7 +15,11 @@ function addToCart(proId){
           $('#cart-count').html(count)
 
         }
-          alert('product added to cart')
+          swal({
+            text:'PRODUCT ADDED TO CART',
+            icon:'success',
+            button:'OK'
+          })
       }
   })
 }
@@ -34,7 +38,11 @@ function addToWishList(proId)
         let count = $('#wish-list-count').html()
         count=parseInt(count)+1
         $('wish-list-count').html(count)
-        alert('product added to wishlist')
+       swal({
+        text:'PRODUCT ADDED TO WISHLIST',
+        icon:'success',
+        button:'OK'
+       })
       }
       else
       {

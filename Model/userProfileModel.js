@@ -66,16 +66,60 @@ module.exports ={
               }
             },
             {
+              $lookup:{
+                from:collection.USER,
+                localField:'userId',
+                foreignField:'_id',
+                as:'user'
+              }
+            },
+            {
               $project:{
                 _id:0,
-                orderProducts:1
+                orderProducts:1,
+                deliveryDetails:1,
+                user:1,
+                date:1,
+                status:1
+
               }
             }
           ]).toArray()
-          console.log('this is orders',orders);
+          // console.log('this is orders',orders);
           resolve(orders)
         })
-      }
+      },
+
+
+      getOneProduct :(orderId)=>{
+        
+        return new Promise(async(resolve,reject)=>{
+            let oneProduct = await db.get().collection(collection.ORDER).aggregate([
+                {
+                    $match:{_id:ObjectID(orderId)}
+                },
+                {
+                    $unwind:'$products'
+                },
+                {
+                    $lookup:{
+                        from:collection.PRODUCTS,
+                        localField:'products.item',
+                        foreignField:'_id',
+                        as:'orderproducts'
+                    }
+                },
+                {
+                    $project:{
+                        orderproducts:1
+                    }
+                }
+            ]).toArray()
+            resolve(oneProduct)
+          })
+         }
+
+
 
 
 }

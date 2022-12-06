@@ -17,7 +17,7 @@ const addNewBanner=(req,res)=>{
 
         }=req.body
         Banner.insertBanner({
-            picture:req.file.filename,
+            picture:req.file.path,
             newBanner
         }).then((response)=>{
             res.redirect('/admin/adminBannerPage')

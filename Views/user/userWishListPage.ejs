@@ -19,7 +19,7 @@
                         <tr>
                             <td class="align-middle"><img src="img/product-1.jpg" alt="" style="width: 50px;"> <%= products[i].productDetails.productName %></td>
                             <td class="align-middle">₹<%= products[i].productDetails.sellingPrice %></td>
-                            <td class="align-middle"><button class="btn btn-sm btn-primary">ADD TO CART</button></td>
+                            <td class="align-middle">  <a onclick="addToCart('<%= productDetails[i]._id %>')" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a></td>
                             <td class="align-middle"><button onclick="removeWishListProduct('<%= products[i]._id %>','<%= products[i].productDetails._id %>')"class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button></td>
                         </tr>
                         <% } %>

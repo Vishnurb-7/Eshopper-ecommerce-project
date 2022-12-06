@@ -35,11 +35,17 @@ router.get('/categoryBased',categoryController.showCategoryPage)
 
 router.get('/userCart',sessionChecker.userSessionChecker,userCart.userCartPage)
 
+router.get('/showAddtoCart',sessionChecker.userSessionChecker,userCart.userCartPage)
+
 router.post('/add-to-cart/:id',sessionChecker.userSessionChecker,userCart.addToCart)
 router.post('/changeProductQuantity',sessionChecker.userSessionChecker,userCart.cartChangeProductQuantity)
 router.delete('/removeCartProduct',sessionChecker.userSessionChecker,userCart.removeCartOneProduct)
 
 router.post("/cart/applyCoupon",sessionChecker.userSessionChecker,couponController.applyCoupon)
+
+
+// router.get('/proceedToCheckOut',sessionChecker.userSessionChecker,proceedToCheckOut.showCheckOutPage)
+// router.post('/cart/proceedToCheckingOut',sessionChecker.userSessionChecker,proceedToCheckOut.showCheckingOutPage)
 
 
 
@@ -49,8 +55,10 @@ router.post('/addToWishList',sessionChecker.userSessionChecker,wishList.addToWis
 router.delete('/removeWishListProduct',sessionChecker.userSessionChecker,wishList.removeWishListProduct)
 
 
-router.get('/proceedToCheckOut',sessionChecker.userSessionChecker,proceedToCheckOut.showCheckOutPage)
-router.post('checkOut/proceedToCheckingOut',sessionChecker.userSessionChecker.apply,proceedToCheckOut.showCheckingOutPage)
+//user checkout
+router.get('/cart/proceedToCheckout',sessionChecker.userSessionChecker,proceedToCheckOut.showProceedToCheckOutPage)
+router.get('/proceedToCheckout',sessionChecker.userSessionChecker,proceedToCheckOut.showCheckOutPage)
+
 
 //user place order
 router.post('/placeOrderDetails',sessionChecker.userSessionChecker,placeOrder.placeOrder)
