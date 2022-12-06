@@ -11,7 +11,7 @@ module.exports = {
       item: ObjectID(proId),
       quantity: 1,
     };
-    // console.log(proId, "dkjdfjdfj");
+    
     return new Promise(async (resolve, reject) => {
       let userCart = await db
         .get()
@@ -95,7 +95,7 @@ module.exports = {
           },
         ])
         .toArray();
-    //   console.log("cartitemsmmmmmmmmptoduvt", cartItems);
+   
       resolve(cartItems);
     });
   },
@@ -112,7 +112,7 @@ module.exports = {
         count = cart.products.length;
       }
       resolve(count);
-      // console.log('count',count);
+ 
     });
   },
 
@@ -154,13 +154,10 @@ module.exports = {
   },
   removeCartProduct: (details) => {
     return new Promise((resolve, reject) => {
-      console.log(details);
-      db.get()
-        .collection(collection.CART)
-        .updateOne(
+      db.get().collection(collection.CART).updateOne(
           { _id: ObjectID(details.cart) },
           {
-            $pull: { products: { item: ObjectID(details.product) } },
+            $pull: { products: { item:ObjectID(details.product) } },
           }
         )
         .then(() => {

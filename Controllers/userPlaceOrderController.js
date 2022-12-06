@@ -7,19 +7,18 @@ const { response } = require('express')
 
 
 const placeOrder = async (req,res)=>{
-    // console.log(" kjbjk",req.body);
+ 
     let products = await placeOrderModel.getCartProductsList(req.body.userId)
-    let totalPrice = await checkOut.TotalAmount(req.body.userId)
-    placeOrderModel.  placeOrder(req.body,products,totalPrice).then((orderId)=>{
+    let totalPrice = req.query.finalTotal
+     totalPrice =parseInt(totalPrice)
+    placeOrderModel.placeOrder(req.body,products,totalPrice).then((orderId)=>{
         if(req.body.payment_method == 'cash_on_delivery')
         {
-            // console.log('mmmmmmmm');
-            
             res.json({codeSuccess:true}) 
         }
         else
         {
-            // console.log('fffffffffffffff');
+            
             placeOrderModel.generateRazorpay(orderId,totalPrice).then((response)=>{
                 res.json(response)
             })
@@ -52,7 +51,7 @@ const showOrderPlaced = async(req,res)=>{
 const verifyPayment = (req,res)=>{
     placeOrderModel.verifyPayment(req.body).then(()=>{
         placeOrderModel.changePaymentStatus(req.body.order.receipt).then(()=>{
-            console.log("Payment SuccessFull");
+          
           res.json({status:true})
         })
     }).catch((err)=>{

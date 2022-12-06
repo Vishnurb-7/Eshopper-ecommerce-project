@@ -298,7 +298,7 @@
                     <div class="card-footer border-secondary bg-transparent">
                         <div class="d-flex justify-content-between mt-2">
                             <h5 class="font-weight-bold">Total</h5>
-                            <h5 class="font-weight-bold">₹<%=finalTotal%>
+                            <h5 class="font-weight-bold">₹<span id="final_total"><%=finalTotal%></span>
                             </h5>
                         </div>
                     </div>
@@ -362,14 +362,15 @@
 <script>
 
     $("#orderFormDetails").submit((e) => {
-        console.log("ddd");
+       let finalTotal = document.getElementById("final_total").innerHTML
+       
         e.preventDefault()
         $.ajax({
-            url: '/placeOrderDetails',
+            url: '/placeOrderDetails?finalTotal='+finalTotal,
             method: 'post',
             data: $('#orderFormDetails').serialize(),
             success: (response) => {
-                alert(response)
+               
                 if (response.codeSuccess ) {
                     location.href = '/orderPlacedPage'
                 }

@@ -8,6 +8,8 @@ const Brand =require('../Model/adminBrand')
 
 const adminProductPage=(req,res)=>{
     
+ 
+    
         addProduct.showProduct().then((product)=>{
             res.render('admin/adminProductPage',{admin:true,title:'PRODUCT CONTROL PAGE',product})
         })
@@ -23,7 +25,7 @@ const adminAddProductPage=(req,res)=>{
     }
 
   const addNewProduct=(req,res)=>{
-   
+    
         const {
             productName,
             actualPrice,
@@ -37,12 +39,17 @@ const adminAddProductPage=(req,res)=>{
 
         }=req.body
         // console.log(req.file)
+
+    
+
+
+
     
         addProduct.insertProduct({
             picture:req.file.path,
             productName,
-            actualPrice,
-            sellingPrice,
+          actualPrice,
+           sellingPrice,
             categoryName,
             brandName,
             quantityName,
@@ -80,12 +87,14 @@ const adminDeleteProduct=(req,res)=>{
 
 const updateProductDetails =async(req,res)=>{
    
+    
+    l
         let productid =req.query.id
     let product = await addProduct.showOneProduct(productid)
 
     category.showCategory().then((categoryDetails)=>{
     Brand.showBrand().then((brandDetails)=>{
-       
+       console.log("pod",product);
         res.render("admin/adminEditProduct",{admin:true,user:false,title:"EDIT PRODUCT PAGE",categoryDetails,brandDetails,product})
     })
     })

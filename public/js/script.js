@@ -12,7 +12,7 @@ function addToCart(proId){
         {
           let count = $('#cart-count').html()
           count = parseInt(count)+1
-          $('#cart-count').html(count)
+          $('cart-count').html(count)
 
         }
           swal({

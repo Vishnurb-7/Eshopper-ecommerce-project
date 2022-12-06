@@ -41,14 +41,19 @@ module.exports = {
               _id: null,
               total: {
                 $sum: {
-                  $multiply: ["$quantity", "$productDetails.sellingPrice"],
+                  $multiply: ["$quantity", ("$productDetails.sellingPrice")],
                 },
               },
             },
-          },
+          },{
+            $project:{
+              _id:0,
+              total:1
+            }
+          }
         ])
         .toArray();
-        total = total[0]?total[0].total:''
+
       resolve(total);
     });
   },

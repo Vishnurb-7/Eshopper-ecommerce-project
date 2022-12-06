@@ -5,10 +5,13 @@ const { response } = require('express');
 
 
 module.exports={
-    insertProduct:(imageID,productionData)=>{
-        return new Promise (async(resolve,reject)=>{   
-                     
-            db.get().collection(collection.PRODUCT).insertOne(imageID,productionData).then((data)=>{
+    insertProduct:(imageID)=>{
+       
+    
+        return new Promise ((resolve,reject)=>{   
+            
+           
+            db.get().collection(collection.PRODUCT).insertOne(imageID).then((data)=>{
                 resolve.apply(data)
             })
         })
@@ -30,6 +33,7 @@ module.exports={
         return new Promise ((resolve,reject)=>{
             db.get().collection(collection.PRODUCT).findOne({_id:ObjectId(id)}).then((response)=>{
                 resolve(response)
+                console.log("product ",product);
             })
         })
       },

@@ -8,14 +8,18 @@ const cartModel=require('../Model/userCartModel')
 
 const userCartPage = async (req,res)=>{
     let products = await userCart.getCartProducts(req.session.user._id)
-    console.log('hhhproductssss',products);
+    // console.log('hhhproductssss',products);
     let cartCount =null
     let wishListCount =null
+    let total =0
    
-    // console.log(total,'toooooootalllllll');
- 
+    if(products.length>0){
+        total = await checkOut.TotalAmount(req.session.user._id)
+    }
+    // console.log(total);
+    let TOTAL = total[0]?total[0].total:0
     if(req.session.user){
-       
+        cartCount = await cartModel.getCartCount(req.session.user._id)
         wishListCount = await wishListModel.getWishListCount(req.session.user._id)
         
     }
@@ -23,13 +27,14 @@ const userCartPage = async (req,res)=>{
    
     userCategory.showCategory().then(async(category)=>{
     let userData=req.session.user
+    if(products.length<0){
+        TOTAL=0
+    }
     let userDetails = req.session.user._id
     
-    cartCount = await userCart.getCartCount(req.session.user._id)
-    // console.log("hellpo"+products);
-     let total = await checkOut.TotalAmount(req.session.user._id) 
-     console.log('total mk',total);
-    res.render('user/cart',{user:true,admin:false,userData,userDetails,category,products,cartCount,total,wishListCount})
+  
+    //  console.log('total mk',total);
+    res.render('user/cart',{user:true,admin:false,userData,userDetails,category,products,cartCount,TOTAL,wishListCount})
     })
 }
 
@@ -44,23 +49,16 @@ const addToCart=(req,res)=>{
 
 const cartChangeProductQuantity = (req,res,next)=>{
     
-    let userData=req.session.user
-    userCart.changeProductQuantity(req.body).then(async (response)=>{
-       checkOut.TotalAmount(userData._id).then((result)=>{
-
-        // let toAmount = result.toAmount
-        // console.log('totalllllllllllllllllllllllllllll',toAmount);
-        console.log('result mk',result);
-        console.log(response);
-        res.json({ response , result })
-       })
+   
+    cartModel.changeProductQuantity(req.body).then(async (response)=>{
+    total = await checkOut.TotalAmount(req.session.user._id)
+    response.total = total
+    res.json(response)
         
     })
 }
 
 const removeCartOneProduct = (req,res)=>{
-  
-    // console.log('remove cart ==========>>>>>>>>>>>>>>      ',req.body);
     cartModel.removeCartProduct(req.body).then((response)=>{
     res.json(response)
    })

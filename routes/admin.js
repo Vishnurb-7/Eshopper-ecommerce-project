@@ -88,6 +88,7 @@ router.get('/adminAddProduct',sessionChecker.adminSessionChecker,addProduct.admi
 router.delete("/deleteProduct",sessionChecker.adminSessionChecker,addProduct.adminDeleteProduct)
 router.post("/adminAddNewProduct",sessionChecker.adminSessionChecker,upload.single('image'),addProduct.addNewProduct)
 router.get("/adminGetOneProduct",sessionChecker.adminSessionChecker,addProduct.updateProductDetails)
+
 // router.post('/updateProductDetails',sessionChecker.adminSessionChecker,upload.single('image'),addProduct.updateProductionDetailsAction)
 router.put('/editData/:id',upload.single('image'),sessionChecker.adminSessionChecker,addProduct.updateProductionDetailsAction)
 

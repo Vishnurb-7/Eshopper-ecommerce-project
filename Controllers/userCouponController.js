@@ -12,7 +12,7 @@ const applyCoupon = async (req,res) => {
     let userData = req.session.user;
     let couponCode = req.body.couponCode;
     let totalAmount = await cartCheckOutModel.TotalAmount(userData._id);//total of cart
-    let TOTAL = totalAmount;//cart Total
+    let TOTAL = totalAmount[0].total;//cart Total
     // console.log("userData ====>", userData);
     // console.log("couponCode ===>", couponCode);
     // console.log("total amount ===>>", TOTAL);

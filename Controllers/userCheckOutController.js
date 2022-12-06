@@ -6,7 +6,7 @@ const wishListModel = require('../Model/userWishLIstModel')
 const checkOut =require("../Model/userCheckOutModel")
 
 const showCheckOutPage = async (req, res) => {
-  // console.log('***************************',req.query.total)
+
     let products = await cartModel.getCartProducts(req.session.user._id)
     let cartCount = null;
     let wishListCount = null
@@ -15,9 +15,9 @@ const showCheckOutPage = async (req, res) => {
       wishListCount = await wishListModel.getWishListCount(req.session.user._id) 
 
     }
-    // let total = await checkOutModel.TotalAmount(req.session.user._id)
+    
     let finalTotal = Math.round(req.query.finalTotal)
-    // console.log('checkouttttTotal',req.query);
+    
     categoryModel.showCategory().then((category) => {
       let userData = req.session.user;
       res.render("user/checkOut", {
@@ -35,6 +35,7 @@ const showCheckOutPage = async (req, res) => {
 
   const showProceedToCheckOutPage = (req,res)=>{
     let finalTotal = req.query.FINALTOTAL
+    console.log('this is final total',finalTotal);
     res.json(finalTotal)
     }
 
