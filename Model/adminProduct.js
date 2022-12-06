@@ -33,7 +33,7 @@ module.exports={
         return new Promise ((resolve,reject)=>{
             db.get().collection(collection.PRODUCT).findOne({_id:ObjectId(id)}).then((response)=>{
                 resolve(response)
-                console.log("product ",product);
+                console.log("product ",response);
             })
         })
       },

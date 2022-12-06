@@ -88,7 +88,7 @@ const adminDeleteProduct=(req,res)=>{
 const updateProductDetails =async(req,res)=>{
    
     
-    l
+    
         let productid =req.query.id
     let product = await addProduct.showOneProduct(productid)
 
