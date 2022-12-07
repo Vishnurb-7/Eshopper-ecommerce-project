@@ -33,11 +33,11 @@ module.exports = {
         if(todayDate<=endDate)
         {
           discountedTotal = total - (discount/100)*total + (3/100)*total
-          // console.log('discountedTotal ===>>> ',discountedTotal);
+      
           response.discountedTotal = discountedTotal
           response.couponStatus = true
           response.discount = discount
-          // console.log('discount response 1st => ',response);
+     
           resolve(response)
         }
         else
@@ -45,7 +45,7 @@ module.exports = {
           response.couponStatus = false
           response.discountedTotal = total + (3/100)*total
           response.discount = 0
-          // console.log('discount response 2st => ',response);
+
           resolve(response)
         }
       }
@@ -54,7 +54,7 @@ module.exports = {
         response.couponStatus = false
         response.discountedTotal = total + (3/100)*total
         response.discount = 0
-        // console.log('discount response 3rd => ',response);
+       
         resolve(response)
       }
 
