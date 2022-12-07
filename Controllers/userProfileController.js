@@ -179,8 +179,7 @@ const editProfileDetails = async(req,res)=>{
     category.showCategory().then(async(category) => {
       let userData = req.session.user;
       let userDetails = await userProfileModel.findUser(userData._id)
-      // console.log("hhhhhhhhhiiii",req.body);
-      // console.log("hhhhhhhhhiiii",userData);
+   
       userProfileModel.updatePassword(req.body,userData).then(()=>{
         res.render("user/userProfilePage", {
           admin:false,

@@ -4,33 +4,33 @@
         <div class="row px-xl-5">
             <div class="col-lg-8">
                 <div class="mb-4">
-                    <h4 class="font-weight-semi-bold mb-4">Billing Address</h4>
+                    <h4 class="font-weight-semi-bold mb-4" >Billing Address</h4>
                     <div class="row">
                         <div class="col-md-6 form-group">
                             <label>First Name</label>
-                            <input class="form-control" type="text" name="firstName">
+                            <input class="form-control" type="text" name="firstName" required>
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Last Name</label>
-                            <input class="form-control" type="text" name="lastName">
+                            <input class="form-control" type="text" name="lastName" required>
                         </div>
                         <div class="col-md-6 form-group">
                             <label>E-mail</label>
-                            <input class="form-control" type="text" name="userEmail">
+                            <input class="form-control" type="text" name="userEmail" required>
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Mobile No</label>
-                            <input class="form-control" type="text" name="userPhoneNumber">
+                            <input class="form-control" type="text" name="userPhoneNumber" required>
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Address</label>
-                            <input class="form-control" type="text" name="address">
+                            <input class="form-control" type="text" name="address" required>
                         </div>
                         <input type="text" name="userId" id="userId" value="<%= userData._id %>" hidden>
 
                         <div class="col-md-6 form-group">
                             <label>Country</label>
-                            <select class="custom-select" name="country">
+                            <select class="custom-select" name="country" required>
                                 <option selected value="IND">India</option>
                                 <option value="AFG">Afghanistan</option>
                                 <option value="ALA">Åland Islands</option>
@@ -252,15 +252,15 @@
                         </div>
                         <div class="col-md-6 form-group">
                             <label>City</label>
-                            <input class="form-control" type="text" name="city">
+                            <input class="form-control" type="text" name="city" required>
                         </div>
                         <div class="col-md-6 form-group">
                             <label>State</label>
-                            <input class="form-control" type="text" name="state">
+                            <input class="form-control" type="text" name="state" required>
                         </div>
                         <div class="col-md-6 form-group">
                             <label>ZIP Code</label>
-                            <input class="form-control" type="text" name="pinCode">
+                            <input class="form-control" type="text" name="pinCode" required>
                         </div>
                         
                     </div>
@@ -310,7 +310,7 @@
                     <div class="card-body">
                         <div class="form-check">
                             <input class="form-check-input " type="radio" name="payment_method" id="online_payment"
-                                value="online_payment">
+                                value="online_payment" checked>
                             <h5><label class="form-check-label " for="online_payment">
                                     Online Payment
                                 </label></h5>

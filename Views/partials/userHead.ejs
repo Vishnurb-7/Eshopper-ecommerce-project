@@ -41,7 +41,7 @@
 
         <div class="row align-items-center py-3 px-xl-5">
             <div class="col-lg-3 d-none d-lg-block">
-                <a href="" class="text-decoration-none">
+                <a href="/" class="text-decoration-none">
                     <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
                 </a>
             </div>
@@ -51,7 +51,7 @@
   
   
             <div class="col-lg-6 col-6 text-left">
-                <form action="">
+                <!-- <form action="">
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Search for products">
                         <div class="input-group-append">
@@ -60,7 +60,7 @@
                             </span>
                         </div>
                     </div>
-                </form>
+                </form> -->
             </div>
   
             <!------------------------------- SEARCH BAR END ------------------------------>
@@ -111,7 +111,7 @@
   
                         <!----------------------- CATEGORY DISPLAY ------------------------------>
                         <% for(var i=0;i<category.length;i++) { %>
-                        <a href="" class="nav-item nav-link"><%= category[i].newCategory %></a>
+                        <a href="/categoryBased/?catName=<%=category[i].newCategory %> " class="nav-item nav-link"><%= category[i].newCategory %></a>
                         <% } %>
                     </div>
                 </nav>
@@ -129,9 +129,9 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <a href="index.html" class="nav-item nav-link active">Home</a>
-                            <a href="shop.html" class="nav-item nav-link">Shop</a>
-                            <a href="detail.html" class="nav-item nav-link">Shop Detail</a>
+                            <a href="/" class="nav-item nav-link active">Home</a>
+                            <a href="/shop" class="nav-item nav-link">Shop</a>
+                            <!-- <a href="detail.html" class="nav-item nav-link">Shop Detail</a> -->
                             
                             <% if(userData) { %>
 
@@ -139,13 +139,13 @@
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                                 <div class="dropdown-menu rounded-0 m-0">
                                     <a href="/userCart" class="dropdown-item">Shopping Cart</a>
-                                    <a href="checkout.html" class="dropdown-item">Checkout</a>
+                                    <!-- <a href="/proceedToCheckout" class="dropdown-item">Checkout</a> -->
                                 </div>
                             </div>
                             <% } %>
 
-
-                            <a href="contact.html" class="nav-item nav-link">Contact</a>
+<!-- 
+                            <a href="contact.html" class="nav-item nav-link">Contact</a> -->
                         </div>
 
                         <% if(userData) { %>

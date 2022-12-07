@@ -10,6 +10,7 @@ const placeOrder =require('../Controllers/userPlaceOrderController')
 const categoryController= require('../Controllers/userCategoryController')
 const userProfileController = require('../Controllers/userProfileController')
 const couponController = require('../Controllers/userCouponController')
+const userShop = require('../Controllers/userShopController')
 
 // user router
 
@@ -44,8 +45,8 @@ router.delete('/removeCartProduct',sessionChecker.userSessionChecker,userCart.re
 router.post("/cart/applyCoupon",sessionChecker.userSessionChecker,couponController.applyCoupon)
 
 
-// router.get('/proceedToCheckOut',sessionChecker.userSessionChecker,proceedToCheckOut.showCheckOutPage)
-// router.post('/cart/proceedToCheckingOut',sessionChecker.userSessionChecker,proceedToCheckOut.showCheckingOutPage)
+//shopper
+router.get('/shop',sessionChecker.userSessionChecker,userShop.shopDisplay)
 
 
 
