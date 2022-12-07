@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = 5000;
+
 const path = require("path");
 const session =require('express-session')
 const cookie_parser =require("cookie-parser")
@@ -8,7 +8,7 @@ const adminRouter = require("./routes/admin");
 const userRouter =require('./routes/user')
 const db = require("./config/connection");
 const expressLayouts = require("express-ejs-layouts");
-
+require('dotenv').config()
 app.use(express.urlencoded({ extended: true }));
 
 app.use(expressLayouts);
@@ -53,6 +53,6 @@ app.use('*',(req,res)=>{
 })
 
 
-app.listen(port, () => {
+app.listen(process.env.PORT, () => {
   console.log("Server started");
 });
